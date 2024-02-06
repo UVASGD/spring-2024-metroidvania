@@ -5,11 +5,28 @@ extends CharacterBody2D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+# Movement variables
+@export var speed = 100
+@export var acceleration = 100
+@export var air_acceleration = 100
+@export var friction = 0
+@export var jump_velocity = -300.0
+@export var gravity_scale = 1.0
+@export var air_resistance = 200.0
+
+@onready var max_jumps : int = 1
+@onready var cur_jumps : int = max_jumps
+@onready var has_dash : bool = false
+@onready var has_wall_jump : bool = false
+
 @onready var anim_player = $AnimationPlayer
 @onready var sprite = $Sprite2D
 @onready var coyote_time = $CoyoteJumpTimer
+@onready var dash_timer = $DashTimer
 
 
+func _ready():
+	add_to_group("Player")
 
 ####################################################################################################
 ########################################## PRIMARY UPDATE ##########################################
@@ -18,18 +35,18 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	handle_jump()
 	var input_axis = Input.get_axis("move_left", "move_right")
+	handle_dash(input_axis)
 	handle_acceleration(input_axis, delta)
 	apply_friction(input_axis, delta)
 	update_anims(input_axis)
+	print(velocity.x)
 	
 	var was_on_floor = is_on_floor() #For Coyote Time
 	
 	move_and_slide() #Physics Update
 	
-	if  was_on_floor && !is_on_floor() && velocity.y >= 0:
+	if was_on_floor && !is_on_floor() && velocity.y >= 0:
 		coyote_time.start()
-
-
 
 ####################################################################################################
 ######################################## MOVEMENT FUNCTIONS ########################################
@@ -40,7 +57,6 @@ func apply_gravity(delta):
 		velocity.y += scaled_gravity * delta
 	if is_on_wall_only():
 		velocity.y = 100 if velocity.y > 100 else velocity.y + ((scaled_gravity * 0.25) * delta)
-		
 
 func apply_friction(input_axis, delta):
 	if input_axis == 0:
@@ -52,7 +68,7 @@ func apply_air_resistence(input_axis, delta):
 
 func handle_acceleration(input_axis, delta):
 	if input_axis && is_on_floor():
-		velocity.x = move_toward(velocity.x, movement_data.speed * input_axis, movement_data.acceleration * delta)
+		velocity.x = move_toward(velocity.x, speed * input_axis, movement_data.acceleration * delta)
 	elif input_axis && !is_on_floor():
 		handle_air_acceleration(input_axis, delta)
 
@@ -64,21 +80,31 @@ func handle_air_acceleration(input_axis, delta):
 func handle_wall_jump():
 	if !is_on_wall(): return
 	var wall_normal = get_wall_normal()
-	if Input.is_action_just_pressed("jump"):
-		velocity.x = wall_normal.x * movement_data.speed
-		velocity.y = movement_data.jump_velocity
+	if has_wall_jump:
+		if Input.is_action_just_pressed("jump"):
+			velocity.x = wall_normal.x * movement_data.speed
+			velocity.y = movement_data.jump_velocity
 
 func handle_jump():
-	if is_on_floor() || coyote_time.time_left > 0.0:
+	if is_on_floor():
+		cur_jumps = max_jumps
+	if (cur_jumps > 0 || is_on_floor()) || (coyote_time.time_left > 0.0):
 		if Input.is_action_just_pressed("jump"):
+			print("JUMP!" + str(cur_jumps))
+			cur_jumps -= 1
 			velocity.y = movement_data.jump_velocity
 	if !is_on_floor():
 		if Input.is_action_just_released("jump") && velocity.y < movement_data.jump_velocity / 2:
 			velocity.y = movement_data.jump_velocity / 2
-	
 	if is_on_wall_only():
 		handle_wall_jump()
 
+func handle_dash(input_axis):
+	if has_dash and dash_timer.is_stopped():
+		if Input.is_action_just_pressed("dash"):
+			velocity.x += 300 * input_axis
+			velocity.y += -200
+			dash_timer.start()
 
 ####################################################################################################
 ######################################## SPRITE/ANIMATIONS #########################################

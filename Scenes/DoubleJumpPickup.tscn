@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://jepylccfe1qq"]
+
+[ext_resource type="PackedScene" uid="uid://bsh72lk3xu8fp" path="res://Scenes/PickupBase.tscn" id="1_m0sm4"]
+[ext_resource type="Script" path="res://Scripts/DoubleJumpPickup.gd" id="2_tn3sf"]
+
+[node name="DoubleJumpPickup" instance=ExtResource("1_m0sm4")]
+script = ExtResource("2_tn3sf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -30,6 +30,12 @@ func _physics_process(delta):
 		coyote_time.start()
 
 
+####################################################################################################
+######################################### ATTACK FUNCTIONS #########################################
+####################################################################################################
+#TODO: Implement a Basic Attack (Maybe in a seperate script?)
+#Start with a basic attack first and then we'll think of more abilities depending on ease
+
 
 ####################################################################################################
 ######################################## MOVEMENT FUNCTIONS ########################################
@@ -65,7 +71,7 @@ func handle_wall_jump():
 	if !is_on_wall(): return
 	var wall_normal = get_wall_normal()
 	if Input.is_action_just_pressed("jump"):
-		velocity.x = wall_normal.x * movement_data.speed
+		velocity.x = wall_normal.x * movement_data.wall_jump_distance
 		velocity.y = movement_data.jump_velocity
 
 func handle_jump():
@@ -78,6 +84,10 @@ func handle_jump():
 	
 	if is_on_wall_only():
 		handle_wall_jump()
+
+#TODO: Add further abilities/movement controlls below
+# Ideas: Dash, Roll, Maybe a Super Dash, Double Jump
+
 
 
 ####################################################################################################

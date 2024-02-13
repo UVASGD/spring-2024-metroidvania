@@ -70,8 +70,14 @@ func handle_air_acceleration(input_axis, delta):
 func handle_wall_jump():
 	if !is_on_wall(): return
 	var wall_normal = get_wall_normal()
-	if Input.is_action_just_pressed("jump"):
-		velocity.x = wall_normal.x * movement_data.wall_jump_distance
+	var dist = movement_data.wall_jump_distance
+	if Input.is_action_just_pressed("jump") && wall_normal == Vector2.LEFT:
+		if Input.is_action_pressed("move_left"): dist * 1.5
+		velocity.x =  wall_normal.x * dist
+		velocity.y = movement_data.jump_velocity
+	if Input.is_action_just_pressed("jump") && wall_normal == Vector2.RIGHT:
+		if Input.is_action_pressed("move_right"): dist * 1.5
+		velocity.x = wall_normal.x * dist
 		velocity.y = movement_data.jump_velocity
 
 func handle_jump():

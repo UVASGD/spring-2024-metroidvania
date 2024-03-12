@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpxt2ugpyaslm"]
+[gd_scene load_steps=17 format=3 uid="uid://dpxt2ugpyaslm"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_1gyos"]
-[ext_resource type="Resource" uid="uid://cvwe5g6eksrbu" path="res://Resources/DefaultMovementData.tres" id="2_advxj"]
 [ext_resource type="Texture2D" uid="uid://bs5vtdp8i8g66" path="res://Assets/Sprites/KnightSprites/120x80_PNGSheets/_Idle.png" id="2_gng88"]
 [ext_resource type="Texture2D" uid="uid://cojos0iib51ow" path="res://Assets/Sprites/KnightSprites/120x80_PNGSheets/_Run.png" id="3_y3fxy"]
 [ext_resource type="Texture2D" uid="uid://d0difl5304txv" path="res://Assets/Sprites/KnightSprites/120x80_PNGSheets/_Jump.png" id="4_m1ey1"]
@@ -397,7 +396,6 @@ collision_layer = 2
 collision_mask = 17
 floor_snap_length = 3.0
 script = ExtResource("1_1gyos")
-movement_data = ExtResource("2_advxj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, -24)
@@ -412,6 +410,7 @@ shape = SubResource("RectangleShape2D_7hf7u")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -35)
 zoom = Vector2(3, 3)
+position_smoothing_enabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

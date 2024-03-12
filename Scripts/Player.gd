@@ -1,100 +1,32 @@
 extends CharacterBody2D
 
-@export var movement_data : PlayerMovementData
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@onready var gravity_vector : Vector2 = ProjectSettings.get_setting("physics/2d/default_gravity_vector")
+@onready var gravity_magnitude : int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var anim_player = $AnimationPlayer
 @onready var sprite = $Sprite2D
 @onready var coyote_time = $CoyoteJumpTimer
 
+@export var SPEED : float = 1000.0
+@export var VELOCITY : float = 0.0
 
-
-####################################################################################################
-########################################## PRIMARY UPDATE ##########################################
-####################################################################################################
 func _physics_process(delta):
-	apply_gravity(delta)
-	handle_jump()
-	var input_axis = Input.get_axis("move_left", "move_right")
-	handle_acceleration(input_axis, delta)
-	apply_friction(input_axis, delta)
-	update_anims(input_axis)
+	get_inputs()
+	update_anims(SPEED)
+	do_movement(delta)
+
+func get_inputs():
+	SPEED = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	
-	var was_on_floor = is_on_floor() #For Coyote Time
-	
-	move_and_slide() #Physics Update
-	
-	if  was_on_floor && !is_on_floor() && velocity.y >= 0:
-		coyote_time.start()
+	if(is_on_floor() and Input.is_action_just_pressed("jump")):
+		velocity.y = -250
 
-
-####################################################################################################
-######################################### ATTACK FUNCTIONS #########################################
-####################################################################################################
-#TODO: Implement a Basic Attack (Maybe in a seperate script?)
-#Start with a basic attack first and then we'll think of more abilities depending on ease
-
-
-####################################################################################################
-######################################## MOVEMENT FUNCTIONS ########################################
-####################################################################################################
-func apply_gravity(delta):
-	var scaled_gravity = gravity * movement_data.gravity_scale
-	if !is_on_floor():
-		velocity.y += scaled_gravity * delta
-	if is_on_wall_only():
-		velocity.y = 100 if velocity.y > 100 else velocity.y + ((scaled_gravity * 0.25) * delta)
-		
-
-func apply_friction(input_axis, delta):
-	if input_axis == 0:
-		velocity.x = move_toward(velocity.x, 0, movement_data.friction * delta)
-
-func apply_air_resistence(input_axis, delta):
-	if input_axis == 0 && !is_on_floor():
-		velocity.x = move_toward(velocity.x, 0, movement_data.air_resistance * delta)
-
-func handle_acceleration(input_axis, delta):
-	if input_axis && is_on_floor():
-		velocity.x = move_toward(velocity.x, movement_data.speed * input_axis, movement_data.acceleration * delta)
-	elif input_axis && !is_on_floor():
-		handle_air_acceleration(input_axis, delta)
-
-func handle_air_acceleration(input_axis, delta):
-	if is_on_floor(): return
-	if input_axis:
-		velocity.x = move_toward(velocity.x, movement_data.speed * input_axis, movement_data.air_acceleration * delta)
-
-func handle_wall_jump():
-	if !is_on_wall(): return
-	var wall_normal = get_wall_normal()
-	var dist = movement_data.wall_jump_distance
-	if Input.is_action_just_pressed("jump") && wall_normal == Vector2.LEFT:
-		if Input.is_action_pressed("move_left"): dist * 1.5
-		velocity.x =  wall_normal.x * dist
-		velocity.y = movement_data.jump_velocity
-	if Input.is_action_just_pressed("jump") && wall_normal == Vector2.RIGHT:
-		if Input.is_action_pressed("move_right"): dist * 1.5
-		velocity.x = wall_normal.x * dist
-		velocity.y = movement_data.jump_velocity
-
-func handle_jump():
-	if is_on_floor() || coyote_time.time_left > 0.0:
-		if Input.is_action_just_pressed("jump"):
-			velocity.y = movement_data.jump_velocity
-	if !is_on_floor():
-		if Input.is_action_just_released("jump") && velocity.y < movement_data.jump_velocity / 2:
-			velocity.y = movement_data.jump_velocity / 2
-	
-	if is_on_wall_only():
-		handle_wall_jump()
-
-#TODO: Add further abilities/movement controlls below
-# Ideas: Dash, Roll, Maybe a Super Dash, Double Jump
-
-
+func do_movement(delta):
+	VELOCITY += SPEED * 15
+	VELOCITY *= 0.9
+	velocity.x = VELOCITY
+	velocity += gravity_vector * gravity_magnitude * delta
+	move_and_slide()
 
 ####################################################################################################
 ######################################## SPRITE/ANIMATIONS #########################################

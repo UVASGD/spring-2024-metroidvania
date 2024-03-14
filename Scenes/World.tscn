@@ -1,21 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7wyh4n3jd0rh"]
 
-[ext_resource type="PackedScene" uid="uid://dpxt2ugpyaslm" path="res://Scenes/Player.tscn" id="1_akk1j"]
-[ext_resource type="Script" path="res://Scripts/World.gd" id="1_kan70"]
-[ext_resource type="PackedScene" uid="uid://bgxx6gtgerj7t" path="res://Scenes/ForestLevel.tscn" id="3_2p58j"]
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_kan70"]
+[ext_resource type="PackedScene" uid="uid://dvxsmqh531xpw" path="res://Scenes/Stages/Forest/forest_stage_1.tscn" id="2_2l42p"]
+[ext_resource type="PackedScene" path="res://Scenes/Player/player.tscn" id="3_gbf17"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_kan70")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -697.0
-offset_top = -591.0
-offset_right = 625.0
-offset_bottom = 271.0
-color = Color(0.235294, 0.321569, 0.294118, 1)
+[node name="Player" parent="." instance=ExtResource("3_gbf17")]
 
-[node name="Player" parent="." instance=ExtResource("1_akk1j")]
-position = Vector2(-47, -70)
-
-[node name="ForestLevel" parent="." instance=ExtResource("3_2p58j")]
-position = Vector2(-53, -347)
+[node name="ForestStage1" parent="." instance=ExtResource("2_2l42p")]

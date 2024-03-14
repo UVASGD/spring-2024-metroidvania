@@ -1,2 +1,3 @@
 # Gold and Rot
-Directed by Nate Pawlas and Kedrick Fudala
+
+This is the repo for Gold & Rot, a game directed by Nate Pawlas and Kedrick Fudala for SGD.

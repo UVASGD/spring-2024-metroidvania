@@ -70,6 +70,7 @@ offset_left = -660.0
 offset_top = -443.0
 offset_right = 662.0
 offset_bottom = 419.0
+color = Color(0.45098, 0.45098, 0.45098, 1)
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(1.025, 1.025)
@@ -87,4 +88,3 @@ motion_scale = Vector2(1.1, 1.1)
 motion_offset = Vector2(0, -50)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]
-position = Vector2(-1, 220)

@@ -7,6 +7,9 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var coyote_time = $CoyoteJumpTimer
 
+@onready var max_health : int = 100
+@onready var current_health : int = max_health
+
 @export var SPEED : float = 1000.0
 @export var VELOCITY : float = 0.0
 

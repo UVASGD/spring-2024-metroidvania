@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dibsl187r5dm6"]
+
+[ext_resource type="PackedScene" uid="uid://cyi2ywmi5luxp" path="res://Scenes/Enemies/enemy_base.tscn" id="1_klx6c"]
+[ext_resource type="Texture2D" uid="uid://3a0utkrkkpsv" path="res://Assets/Sprites/Enemies/KnightArmourCorrectSize.png" id="2_axwj7"]
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy_knight.gd" id="2_wyyfc"]
+
+[node name="EnemyKnight" instance=ExtResource("1_klx6c")]
+script = ExtResource("2_wyyfc")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_axwj7")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(3, 2.5)
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(3, 2.5)
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(3, 2.5)

@@ -1,11 +1,12 @@
 extends CharacterBody2D
+class_name Player
 
 @onready var gravity_vector : Vector2 = ProjectSettings.get_setting("physics/2d/default_gravity_vector")
 @onready var gravity_magnitude : int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@onready var anim_player = $AnimationPlayer
-@onready var sprite = $Sprite2D
-@onready var coyote_time = $CoyoteJumpTimer
+@onready var anim_player : Object = $AnimationPlayer
+@onready var sprite : Object = $Sprite2D
+@onready var coyote_time : Object = $CoyoteJumpTimer
 
 @onready var max_health : int = 100
 @onready var current_health : int = max_health
@@ -13,6 +14,7 @@ extends CharacterBody2D
 @export var SPEED : float = 1000.0
 @export var VELOCITY : float = 0.0
 
+########################################## PRIMARY UPDATE ##########################################
 func _physics_process(delta):
 	get_inputs()
 	update_anims(SPEED)
@@ -22,8 +24,9 @@ func get_inputs():
 	SPEED = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	
 	if(is_on_floor() and Input.is_action_just_pressed("jump")):
-		velocity.y = -250
+		jump()
 
+######################################## MOVEMENT FUNCTIONS ########################################
 func do_movement(delta):
 	VELOCITY += SPEED * 15
 	VELOCITY *= 0.9
@@ -31,9 +34,10 @@ func do_movement(delta):
 	velocity += gravity_vector * gravity_magnitude * delta
 	move_and_slide()
 
-####################################################################################################
+func jump():
+	velocity.y = -250
+
 ######################################## SPRITE/ANIMATIONS #########################################
-####################################################################################################
 func update_anims(input_axis):
 	if input_axis != 0:
 		flip_sprite(input_axis)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://164llc6sngr4"]
 
-[ext_resource type="Script" path="res://Scripts/world.gd" id="1_lli7q"]
+[ext_resource type="Script" path="res://Scenes/Stages/world.gd" id="1_lli7q"]
 [ext_resource type="Texture2D" uid="uid://bsqixhrdwjq40" path="res://Assets/Sprites/World/BrickTile.png" id="3_o8q4x"]
 [ext_resource type="Texture2D" uid="uid://ckq3vdix01bqi" path="res://Assets/Sprites/World/HalfTile.png" id="4_jgfde"]
-[ext_resource type="PackedScene" uid="uid://dpxt2ugpyaslm" path="res://Scenes/Player.tscn" id="6_oqrih"]
+[ext_resource type="PackedScene" uid="uid://dpxt2ugpyaslm" path="res://Scenes/Player/player.tscn" id="6_oqrih"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwsqa"]
 texture = ExtResource("3_o8q4x")

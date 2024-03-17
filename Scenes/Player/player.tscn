@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dpxt2ugpyaslm"]
+[gd_scene load_steps=19 format=3 uid="uid://dpxt2ugpyaslm"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_63i3x"]
 [ext_resource type="Texture2D" uid="uid://bs5vtdp8i8g66" path="res://Assets/Sprites/KnightSprites/120x80_PNGSheets/_Idle.png" id="2_gng88"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dqyn3o8kepq5j" path="res://Assets/Sprites/KnightSprites/120x80_PNGSheets/_Fall.png" id="5_3glig"]
 [ext_resource type="Texture2D" uid="uid://1wnngdujl6xy" path="res://Assets/Sprites/KnightSprites/120x80_PNGSheets/_JumpFallInbetween.png" id="6_wsqea"]
 [ext_resource type="Texture2D" uid="uid://c7hxh63an3bba" path="res://Assets/Sprites/KnightSprites/120x80_PNGSheets/_WallSlide.png" id="7_rxpxg"]
+[ext_resource type="PackedScene" uid="uid://d4imk8o8pdsl1" path="res://Scenes/hurtbox.tscn" id="8_lervm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hf7u"]
 size = Vector2(9.82204, 20.7686)
@@ -390,6 +391,9 @@ _data = {
 "wall_slide": SubResource("Animation_a6tsr")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0g6je"]
+size = Vector2(10, 21)
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, 0.241557)
 collision_layer = 2
@@ -424,3 +428,11 @@ one_shot = true
 
 [node name="DashTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Hurtbox" parent="." instance=ExtResource("8_lervm")]
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, -10.7416)
+shape = SubResource("RectangleShape2D_0g6je")
+
+[editable path="Hurtbox"]

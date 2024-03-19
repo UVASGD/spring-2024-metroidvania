@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6elk1bv4ea5i"]
+[gd_scene load_steps=8 format=3 uid="uid://c6elk1bv4ea5i"]
 
 [ext_resource type="PackedScene" uid="uid://c1owfsrioirqm" path="res://Scenes/Stages/stageTemplate.tscn" id="1_mftxy"]
 [ext_resource type="Texture2D" uid="uid://bbmvbyspm5ral" path="res://Assets/Sprites/World/Beach/Beach-4-1.png" id="2_odx3w"]
@@ -7,9 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://kgpbr84a3ofb" path="res://Assets/Sprites/World/Beach/Beach-3-2.png" id="5_6gue8"]
 [ext_resource type="Texture2D" uid="uid://cnm8m7g8es2us" path="res://Assets/Sprites/World/Beach/Beach-2-2.png" id="6_o6mjf"]
 [ext_resource type="Texture2D" uid="uid://bvy5mkfqrn126" path="res://Assets/Sprites/World/Beach/Beach-2-1.png" id="7_pif41"]
-[ext_resource type="PackedScene" uid="uid://dpxt2ugpyaslm" path="res://Scenes/Player/player.tscn" id="8_76s0n"]
 
-[node name="StageTemplate" instance=ExtResource("1_mftxy")]
+[node name="BeachStage2" instance=ExtResource("1_mftxy")]
 
 [node name="TileMap" parent="." index="0"]
 modulate = Color(0.207843, 0.372549, 0.352941, 1)
@@ -59,30 +58,27 @@ scale = Vector2(1.15313, 1.53947)
 texture = ExtResource("3_gqau2")
 
 [node name="ParallaxLayer2" parent="ParallaxBackground" index="2"]
+modulate = Color(0.407843, 0.6, 0.596078, 1)
 position = Vector2(2, 20)
 motion_scale = Vector2(1, 0.5)
 motion_offset = Vector2(0, -50)
 
 [node name="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="0"]
-modulate = Color(0.407843, 0.6, 0.596078, 1)
 position = Vector2(-205, 135)
 scale = Vector2(0.978125, 0.884211)
 texture = ExtResource("4_bpwpb")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="1"]
-modulate = Color(0.407843, 0.6, 0.596078, 1)
 position = Vector2(1044, 135)
 scale = Vector2(0.978125, 0.884211)
 texture = ExtResource("4_bpwpb")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="2"]
-modulate = Color(0.407843, 0.6, 0.596078, 1)
 position = Vector2(419, 132)
 scale = Vector2(0.978125, 0.884211)
 texture = ExtResource("5_6gue8")
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" index="3"]
-modulate = Color(0.407843, 0.6, 0.596078, 1)
 position = Vector2(-831, 136)
 scale = Vector2(0.978125, 0.884211)
 texture = ExtResource("5_6gue8")
@@ -129,6 +125,3 @@ offset_top = -967.0
 offset_right = 2264.0
 offset_bottom = 1468.0
 color = Color(0.584314, 0.737255, 0.705882, 0.0784314)
-
-[node name="Player" parent="." index="3" instance=ExtResource("8_76s0n")]
-position = Vector2(-2, 246)

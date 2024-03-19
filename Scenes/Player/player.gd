@@ -26,6 +26,9 @@ func get_inputs():
 	if(is_on_floor() and Input.is_action_just_pressed("jump")):
 		jump()
 
+	if(Input.is_action_just_pressed("attack1")):
+		print("I attack!")
+
 ######################################## MOVEMENT FUNCTIONS ########################################
 func do_movement(delta):
 	VELOCITY += SPEED * 15
@@ -36,6 +39,10 @@ func do_movement(delta):
 
 func jump():
 	velocity.y = -250
+
+######################################### COMBAT FUNCTIONS #########################################
+
+
 
 ######################################## SPRITE/ANIMATIONS #########################################
 func update_anims(input_axis):

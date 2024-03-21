@@ -56,12 +56,12 @@ func update_anims(input_axis):
 	else:
 		anim_player.play("idle")
 	
-	#if !is_on_floor() && velocity.y < 0:
-		#anim_player.play("jump")
+	if !is_on_floor() && velocity.y < 0:
+		anim_player.play("jump")
 	#elif !is_on_floor() && velocity.y == 0:
 		#anim_player.play("jump_to_fall")
-	#elif !is_on_floor() && velocity.y > 0:
-		#anim_player.play("fall")
+	elif !is_on_floor() && velocity.y > 0:
+		anim_player.play("fall")
 	
 	#if is_on_wall_only():
 		#flip_sprite(-input_axis)

@@ -7,12 +7,16 @@ class_name Player
 @onready var anim_player : Object = $AnimationPlayer
 @onready var sprite : Object = $Sprite2D
 @onready var coyote_time : Object = $CoyoteJumpTimer
+@onready var interaction_area : Object = $InteractionArea
 
 @onready var max_health : int = 100
 @onready var current_health : int = max_health
 
 @export var SPEED : float = 1000.0
 @export var VELOCITY : float = 0.0
+
+func _ready():
+	pass
 
 ########################################## PRIMARY UPDATE ##########################################
 func _physics_process(delta):
@@ -52,16 +56,16 @@ func update_anims(input_axis):
 	else:
 		anim_player.play("idle")
 	
-	if !is_on_floor() && velocity.y < 0:
-		anim_player.play("jump")
-	elif !is_on_floor() && velocity.y == 0:
-		anim_player.play("jump_to_fall")
-	elif !is_on_floor() && velocity.y > 0:
-		anim_player.play("fall")
+	#if !is_on_floor() && velocity.y < 0:
+		#anim_player.play("jump")
+	#elif !is_on_floor() && velocity.y == 0:
+		#anim_player.play("jump_to_fall")
+	#elif !is_on_floor() && velocity.y > 0:
+		#anim_player.play("fall")
 	
-	if is_on_wall_only():
-		flip_sprite(-input_axis)
-		anim_player.play("wall_slide")
+	#if is_on_wall_only():
+		#flip_sprite(-input_axis)
+		#anim_player.play("wall_slide")
 
 func flip_sprite(input_axis):
 	sprite.flip_h = input_axis < 0

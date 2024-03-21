@@ -69,6 +69,7 @@ attack2={
 2d_physics/layer_4="PlayerAttacks"
 2d_physics/layer_5="EnemyAttacks"
 2d_physics/layer_6="Pickups"
+2d_physics/layer_7="Interactions"
 
 [rendering]
 

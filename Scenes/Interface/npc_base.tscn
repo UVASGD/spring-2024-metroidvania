@@ -3,12 +3,17 @@
 [ext_resource type="Script" path="res://Scenes/Interface/npc_base.gd" id="1_i3rkv"]
 [ext_resource type="Texture2D" uid="uid://k0av7e5caj6f" path="res://Assets/Sprites/Interface/NPCInteractIcon.png" id="2_h534u"]
 
-[node name="NPCBase" type="Area2D"]
+[node name="NPCBase" type="Sprite2D"]
 script = ExtResource("1_i3rkv")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="InteractIcon" type="Sprite2D" parent="."]
 texture = ExtResource("2_h534u")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

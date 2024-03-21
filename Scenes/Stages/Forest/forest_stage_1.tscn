@@ -7,7 +7,7 @@
 [node name="ForestStage1" instance=ExtResource("1_0boau")]
 
 [node name="GraveyardWatchman" parent="." index="0" instance=ExtResource("2_yenxb")]
-position = Vector2(100, 222)
+position = Vector2(44, 256)
 
 [node name="TileMap" parent="." index="1"]
 modulate = Color(0.0745098, 0.0980392, 0.0705882, 1)

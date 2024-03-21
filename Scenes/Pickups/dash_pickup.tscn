@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwjue0n1p21e5"]
+
+[ext_resource type="PackedScene" uid="uid://bsh72lk3xu8fp" path="res://Scenes/PickupBase.tscn" id="1_6jl2i"]
+[ext_resource type="Script" path="res://PickupBase.gd" id="2_wyku5"]
+
+[node name="PickupBase" instance=ExtResource("1_6jl2i")]
+script = ExtResource("2_wyku5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

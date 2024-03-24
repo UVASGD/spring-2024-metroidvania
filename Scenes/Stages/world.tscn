@@ -8,9 +8,10 @@
 [node name="World" type="Node2D"]
 script = ExtResource("1_5umtl")
 
-[node name="Player" parent="." instance=ExtResource("2_afue0")]
-position = Vector2(-30, 245)
-
 [node name="EnemyKnight" parent="." instance=ExtResource("4_bolh6")]
+position = Vector2(-103, 230)
+
+[node name="Player" parent="." instance=ExtResource("2_afue0")]
+position = Vector2(-178, 253)
 
 [node name="ForestStage1" parent="." instance=ExtResource("3_ki2fu")]

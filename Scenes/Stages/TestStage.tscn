@@ -12,8 +12,5 @@ layer_0/tile_data = PackedInt32Array(1179624, 131075, 0, 1245160, 65539, 0, 1310
 [node name="ParallaxBackground" parent="." index="1"]
 scroll_offset = Vector2(600.401, 3.95435)
 
-[node name="ColorRect" parent="ParallaxBackground/BackgroundColor" index="0"]
-color = Color(0.45098, 0.45098, 0.45098, 1)
-
 [node name="Player" parent="." index="3" instance=ExtResource("2_qciav")]
 position = Vector2(-44, 216)

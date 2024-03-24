@@ -17,9 +17,6 @@ func _ready():
 	text_box.clear()
 	text_box.z_index = 1
 
-func _process(delta):
-	pass
-
 func interact():
 	if !is_speaking:
 		text_box.clear()

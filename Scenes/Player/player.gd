@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@onready var attack1 : PackedScene = preload("res://Scenes/player_attack1.tscn")
+@onready var attack1 : PackedScene = preload("res://Scenes/Player/player_attack1.tscn")
 
 const gravity_vector : Vector2 = Vector2(0, 1)
 const gravity_magnitude : int = 800

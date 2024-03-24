@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://umexu0640sd"]
 
 [ext_resource type="PackedScene" uid="uid://btsltmgtajvmd" path="res://Scenes/hitbox.tscn" id="1_4w4ho"]
-[ext_resource type="Script" path="res://Scenes/player_attack1.gd" id="2_baf36"]
+[ext_resource type="Script" path="res://Scenes/Player/player_attack1.gd" id="2_baf36"]
 [ext_resource type="Texture2D" uid="uid://dmf2j8rauwijv" path="res://Assets/Sprites/Player/PlayerAttackSpritesheet.png" id="3_xqh74"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vvl6r"]

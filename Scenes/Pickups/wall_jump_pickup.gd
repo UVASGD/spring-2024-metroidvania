@@ -1,5 +1,4 @@
-extends Area2D
-class_name PickupBase
+extends PickupBase
 
 func _on_body_entered(body):
 	print("hello!")

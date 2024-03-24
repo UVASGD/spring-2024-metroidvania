@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsh72lk3xu8fp"]
+[gd_scene load_steps=3 format=3 uid="uid://bsh72lk3xu8fp"]
 
-[ext_resource type="Texture2D" uid="uid://bumd0nccljk0l" path="res://Assets/Sprites/Pickups/DoubleJumpPickup.png" id="1_5ljm6"]
-[ext_resource type="Script" path="res://Scripts/PickupBase.gd" id="1_n54t8"]
+[ext_resource type="Script" path="res://Scenes/Pickups/pickup_base.gd" id="1_hdamk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iro4x"]
 size = Vector2(16, 16)
@@ -9,10 +8,9 @@ size = Vector2(16, 16)
 [node name="PickupBase" type="Area2D"]
 collision_layer = 32
 collision_mask = 2
-script = ExtResource("1_n54t8")
+script = ExtResource("1_hdamk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_iro4x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_5ljm6")

@@ -6,6 +6,3 @@ func _on_body_entered(body):
 		body.max_jumps += 1
 		print("PICKUP!")
 		queue_free()
-
-
-

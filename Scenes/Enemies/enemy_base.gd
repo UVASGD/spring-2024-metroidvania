@@ -1,8 +1,8 @@
 extends CharacterBody2D
 class_name EnemyBase
 
-@onready var gravity_vector : Vector2 = ProjectSettings.get_setting("physics/2d/default_gravity_vector")
-@onready var gravity_magnitude : int = ProjectSettings.get_setting("physics/2d/default_gravity")
+const gravity_vector : Vector2 = Vector2(0, 1)
+const gravity_magnitude : int = 800
 
 @onready var max_health : int = 100
 @onready var current_health : int = max_health
@@ -16,3 +16,6 @@ func _on_hurtbox_area_entered(area):
 func receive_damage(damage):
 	current_health -= damage
 	print("I took " + str(damage) + " damage!")
+	if current_health <= 0:
+		print("I have died!")
+		self.queue_free()

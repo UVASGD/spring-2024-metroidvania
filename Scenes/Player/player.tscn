@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d4imk8o8pdsl1" path="res://Scenes/hurtbox.tscn" id="8_lervm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hf7u"]
-size = Vector2(9.82204, 20.7686)
+size = Vector2(12, 26.0102)
 
 [sub_resource type="Animation" id="Animation_sseod"]
 length = 0.001
@@ -97,7 +97,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0g6je"]
-size = Vector2(10, 21)
+size = Vector2(12, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3v2r"]
 size = Vector2(29, 29)
@@ -116,7 +116,7 @@ hframes = 6
 vframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.00933027, -10.6157)
+position = Vector2(0, -13.2365)
 shape = SubResource("RectangleShape2D_7hf7u")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -131,6 +131,9 @@ one_shot = true
 [node name="DashTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_0ixt1")
@@ -141,7 +144,7 @@ collision_layer = 2
 collision_mask = 16
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(0, -10.7416)
+position = Vector2(0, -13.2416)
 shape = SubResource("RectangleShape2D_0g6je")
 
 [node name="InteractArea" type="Area2D" parent="."]

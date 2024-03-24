@@ -16,26 +16,25 @@ layer_0/tile_data = PackedInt32Array(1179624, 131075, 0, 1245160, 65539, 0, 1310
 [node name="ColorRect" parent="ParallaxBackground/BackgroundColor" index="0"]
 color = Color(0.235294, 0.321569, 0.294118, 1)
 
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" index="1"]
+[node name="ParallaxLayer3" parent="ParallaxBackground" index="1"]
 modulate = Color(0.305882, 0.458824, 0.34902, 1)
-motion_scale = Vector2(1.025, 1.025)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4" index="0"]
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="1"]
 position = Vector2(-328, 119)
 scale = Vector2(1.09063, 1.18333)
 texture = ExtResource("2_8n0pc")
 
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4" index="1"]
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="2"]
 position = Vector2(127, 123)
 scale = Vector2(1.09063, 1.18333)
 texture = ExtResource("2_8n0pc")
 
-[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4" index="2"]
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="3"]
 position = Vector2(503, 129)
 scale = Vector2(1.09063, 1.18333)
 texture = ExtResource("2_8n0pc")
 
-[node name="ParallaxLayer2" parent="ParallaxBackground" index="3"]
+[node name="ParallaxLayer2" parent="ParallaxBackground" index="2"]
 modulate = Color(0.145098, 0.235294, 0.133333, 1)
 position = Vector2(0, 170)
 
@@ -53,7 +52,7 @@ position = Vector2(-400, 0)
 scale = Vector2(0.85, 0.85)
 texture = ExtResource("2_8n0pc")
 
-[node name="ParallaxLayer1" parent="ParallaxBackground" index="4"]
+[node name="ParallaxLayer1" parent="ParallaxBackground" index="3"]
 modulate = Color(0.0941176, 0.164706, 0.0862745, 1)
 position = Vector2(0, 220)
 

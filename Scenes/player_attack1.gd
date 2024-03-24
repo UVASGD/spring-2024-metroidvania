@@ -1,13 +1,19 @@
 extends Hitbox
 
-@onready var timer = $Timer
+@onready var sprite = $Sprite2D
+@onready var anim_player : Object = $AnimationPlayer
+@onready var parent : Node2D
 
-# Called when the node enters the scene tree for the first time.
+@onready var direction_facing
+
 func _ready():
-	timer.start()
+	if direction_facing < 0:
+		sprite.flip_h = 1
+	else:
+		sprite.flip_h = 0
+	anim_player.play("attack1")
+	await anim_player.animation_finished
+	self.queue_free()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if timer.is_stopped():
-		self.queue_free()
+#func _process(delta):
+	#self.global_positon = parent.global_position + Vector2(15 * self.direction_facing, -15)

@@ -15,6 +15,7 @@ func _ready():
 	text_speed.set_wait_time(.05) # time between letters
 	text_timeout.set_wait_time(4)
 	text_box.clear()
+	text_box.z_index = 1
 
 func _process(delta):
 	pass

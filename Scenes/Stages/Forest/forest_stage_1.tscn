@@ -20,19 +20,19 @@ color = Color(0.219608, 0.341176, 0.203922, 1)
 modulate = Color(0.145098, 0.235294, 0.133333, 1)
 motion_scale = Vector2(0.8, 0.8)
 
+[node name="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="0"]
+position = Vector2(-500, 119)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_8n0pc")
+
 [node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="1"]
-position = Vector2(-328, 119)
-scale = Vector2(1.09063, 1.18333)
+position = Vector2(0, 123)
+scale = Vector2(1.25, 1.25)
 texture = ExtResource("2_8n0pc")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="2"]
-position = Vector2(127, 123)
-scale = Vector2(1.09063, 1.18333)
-texture = ExtResource("2_8n0pc")
-
-[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="3"]
-position = Vector2(503, 129)
-scale = Vector2(1.09063, 1.18333)
+position = Vector2(500, 129)
+scale = Vector2(1.25, 1.25)
 texture = ExtResource("2_8n0pc")
 
 [node name="ParallaxLayer2" parent="ParallaxBackground" index="2"]

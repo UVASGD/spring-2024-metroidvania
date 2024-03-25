@@ -43,7 +43,7 @@ texture = ExtResource("3_gqau2")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="2"]
 position = Vector2(1069, 133.499)
-scale = Vector2(1.15313, 0.93421)
+scale = Vector2(1.25, 1.013)
 texture = ExtResource("2_odx3w")
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" index="3"]

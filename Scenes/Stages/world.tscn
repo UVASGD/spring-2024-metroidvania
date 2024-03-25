@@ -15,3 +15,4 @@ position = Vector2(-103, 230)
 position = Vector2(-178, 253)
 
 [node name="ForestStage1" parent="." instance=ExtResource("3_ki2fu")]
+script = ExtResource("1_5umtl")

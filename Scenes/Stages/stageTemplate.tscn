@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1owfsrioirqm"]
+[gd_scene load_steps=10 format=3 uid="uid://c1owfsrioirqm"]
 
-[ext_resource type="Script" path="res://Scenes/Stages/world.gd" id="1_eireg"]
 [ext_resource type="Texture2D" uid="uid://bsqixhrdwjq40" path="res://Assets/Sprites/World/BrickTile.png" id="2_xk8a4"]
+[ext_resource type="Texture2D" uid="uid://cif4jt0sdxxgr" path="res://Assets/Sprites/World/Beach/BeachTileset.png" id="3_h6gco"]
 [ext_resource type="Texture2D" uid="uid://ckq3vdix01bqi" path="res://Assets/Sprites/World/HalfTile.png" id="3_mwcec"]
 [ext_resource type="Texture2D" uid="uid://dtt8oqse5mom5" path="res://Assets/Sprites/World/Forest/ForestTilemap.png" id="4_21qtx"]
 
@@ -19,6 +19,32 @@ texture = ExtResource("3_mwcec")
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -4, -8, -4)
 0:0/0/physics_layer_0/polygon_0/one_way = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qdukx"]
+texture = ExtResource("3_h6gco")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/next_alternative_id = 2
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8)
+3:0/1 = 1
+3:0/1/flip_h = true
+3:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/1/physics_layer_0/angular_velocity = 0.0
+3:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcx27"]
 texture = ExtResource("4_21qtx")
@@ -52,9 +78,9 @@ physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_xwsqa")
 sources/1 = SubResource("TileSetAtlasSource_e2mvi")
 sources/3 = SubResource("TileSetAtlasSource_xcx27")
+sources/2 = SubResource("TileSetAtlasSource_qdukx")
 
 [node name="StageTemplate" type="Node2D"]
-script = ExtResource("1_eireg")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_typ1f")

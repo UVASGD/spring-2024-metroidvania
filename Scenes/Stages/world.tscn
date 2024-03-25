@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7wyh4n3jd0rh"]
+
+[ext_resource type="Script" path="res://Scenes/Stages/world.gd" id="1_5umtl"]
+[ext_resource type="PackedScene" uid="uid://dpxt2ugpyaslm" path="res://Scenes/Player/player.tscn" id="2_afue0"]
+[ext_resource type="PackedScene" uid="uid://dvxsmqh531xpw" path="res://Scenes/Stages/Forest/forest_stage_1.tscn" id="3_ki2fu"]
+[ext_resource type="PackedScene" uid="uid://dibsl187r5dm6" path="res://Scenes/Enemies/enemy_knight.tscn" id="4_bolh6"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_5umtl")
+
+[node name="EnemyKnight" parent="." instance=ExtResource("4_bolh6")]
+position = Vector2(-103, 230)
+
+[node name="Player" parent="." instance=ExtResource("2_afue0")]
+position = Vector2(-178, 253)
+
+[node name="ForestStage1" parent="." instance=ExtResource("3_ki2fu")]

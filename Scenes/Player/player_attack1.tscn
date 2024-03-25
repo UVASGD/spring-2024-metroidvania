@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://umexu0640sd"]
+
+[ext_resource type="PackedScene" uid="uid://btsltmgtajvmd" path="res://Scenes/hitbox.tscn" id="1_4w4ho"]
+[ext_resource type="Script" path="res://Scenes/Player/player_attack1.gd" id="2_baf36"]
+[ext_resource type="Texture2D" uid="uid://dmf2j8rauwijv" path="res://Assets/Sprites/Player/PlayerAttackSpritesheet.png" id="3_xqh74"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vvl6r"]
+radius = 8.06226
+
+[sub_resource type="Animation" id="Animation_qojxt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5orss"]
+resource_name = "attack1"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tmt5l"]
+_data = {
+"RESET": SubResource("Animation_qojxt"),
+"attack1": SubResource("Animation_5orss")
+}
+
+[node name="Attack1" instance=ExtResource("1_4w4ho")]
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("2_baf36")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_vvl6r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("3_xqh74")
+hframes = 8
+vframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_tmt5l")
+}

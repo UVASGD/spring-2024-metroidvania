@@ -14,8 +14,8 @@ func _on_hurtbox_area_entered(area):
 	receive_damage(area.damage)
 
 func receive_damage(damage):
-	current_health -= damage
-	print("I took " + str(damage) + " damage!")
+	self.current_health -= damage
+	print(str(name) + " took " + str(damage) + " damage!")
 	if current_health <= 0:
-		print("I have died!")
+		print(str(name) + " has died!")
 		self.queue_free()

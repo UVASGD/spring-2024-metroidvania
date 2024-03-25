@@ -8,7 +8,7 @@ class_name NPCBase
 @onready var text_timeout : Object = $TextTimeout
 
 @onready var is_speaking : bool = false
-@export var dialogue : String = "This is a test string!"
+@export var dialogue : String
 
 func _ready():
 	interact_icon.visible = false

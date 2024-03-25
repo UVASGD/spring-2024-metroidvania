@@ -82,6 +82,16 @@ func spawn_attack1():
 		attack_timer.wait_time = attack1_speed
 		attack_timer.start()
 
+func _on_hurtbox_area_entered(area):
+	receive_damage(area.damage)
+
+func receive_damage(damage):
+	self.current_health -= damage
+	print("The player took " + str(damage) + " damage!")
+	if current_health <= 0:
+		print("The player died!")
+		print("GAME OVER")
+
 ####################################### INTERACTION FUNCTIONS ######################################
 func interact():
 	var closest_area = null

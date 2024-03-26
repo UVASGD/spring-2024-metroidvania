@@ -30,7 +30,8 @@ const gravity_magnitude : int = 800
 @onready var can_interact : bool = false
 
 func _ready():
-	pass
+	attack_timer.wait_time = 0.75
+	dash_timer.wait_time = 1.0
 
 ########################################## PRIMARY UPDATE ##########################################
 func _physics_process(delta):
@@ -42,15 +43,15 @@ func get_inputs():
 	if !is_interacting:
 		SPEED = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 		if !is_dashing:
-			if is_on_floor() && Input.is_action_just_pressed("jump"):
+			if is_on_floor() and Input.is_action_just_pressed("jump"):
 				jump()
 			if Input.is_action_just_pressed("dash"):
-				pass
+				dash()
 			if Input.is_action_just_pressed("attack1"):
 				spawn_attack1()
 			if is_on_wall_only() and Input.is_action_just_pressed("jump"):
 				wall_jump()
-			if Input.is_action_just_pressed("interact") && interactable_area_count > 0:
+			if Input.is_action_just_pressed("interact") and interactable_area_count > 0:
 				interact()
 
 ######################################## MOVEMENT FUNCTIONS ########################################
@@ -70,6 +71,12 @@ func wall_jump():
 	VELOCITY =  wall_normal.x * dist
 	velocity.y = -300
 
+func dash():
+	if(dash_timer.is_stopped()):
+		VELOCITY += 400 * direction_facing
+		dash_timer.wait_time = 1
+		dash_timer.start()
+
 ######################################### COMBAT FUNCTIONS #########################################
 func spawn_attack1():
 	if(attack_timer.is_stopped()):
@@ -79,7 +86,6 @@ func spawn_attack1():
 		#attack_inst.parent = self
 		attack1_inst.damage = attack1_damage
 		get_parent().add_child(attack1_inst)
-		attack_timer.wait_time = attack1_speed
 		attack_timer.start()
 
 func _on_hurtbox_area_entered(area):

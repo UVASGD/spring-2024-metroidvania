@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwtuc5ota6iwt"]
+
+[ext_resource type="PackedScene" uid="uid://b61qfosyp44br" path="res://Scenes/Stages/statue_test.tscn" id="1_8gsb7"]
+[ext_resource type="Texture2D" uid="uid://eqigfgo442dp" path="res://Assets/Sprites/World/Statue4.png" id="2_3knjr"]
+
+[node name="StatueTest2" instance=ExtResource("1_8gsb7")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_3knjr")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PackedVector2Array(1, -13, 7, -13, 10, -6, 16, 0, 12, 6, 12, 16, -5, 16, -4, 10, 1, 5, 0, -2, -12, -4, -16, -7, -12, -9, -1, -6, -1, -10)

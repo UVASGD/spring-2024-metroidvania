@@ -85,7 +85,7 @@ func spawn_attack1():
 func _on_hurtbox_area_entered(area):
 	receive_damage(area.damage)
 
-func receive_damage(damage):
+func receive_damage(damage : int):
 	self.current_health -= damage
 	print("The player took " + str(damage) + " damage!")
 	if current_health <= 0:
@@ -103,7 +103,6 @@ func interact():
 	if(closest_area != null):
 		var parent = closest_area.get_parent()
 		parent.interact()
-	print("I am now interacting!")
 
 func _on_interact_area_area_entered(area):
 	if(area.name == "InteractableArea"):

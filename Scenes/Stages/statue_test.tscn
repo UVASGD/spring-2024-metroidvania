@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b61qfosyp44br"]
+
+[ext_resource type="Texture2D" uid="uid://d15pya3rxa1uu" path="res://Assets/Sprites/World/statue2.png" id="1_ofkr3"]
+
+[node name="StatueTest" type="RigidBody2D"]
+collision_layer = 128
+collision_mask = 3
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ofkr3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-2, -16, -4, -14, -4, -10, -3, -7, -8, -2, -8, 8, -6, 11, -6, 16, 5, 16, 5, 11, 7, 5, 7, -2, 2, -7, 4, -10, 4, -13, 2, -16)

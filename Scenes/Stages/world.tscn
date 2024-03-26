@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/Stages/world.gd" id="1_5umtl"]
 [ext_resource type="PackedScene" uid="uid://dpxt2ugpyaslm" path="res://Scenes/Player/player.tscn" id="2_afue0"]
-[ext_resource type="PackedScene" uid="uid://dvxsmqh531xpw" path="res://Scenes/Stages/Forest/forest_stage_1.tscn" id="3_ki2fu"]
 [ext_resource type="PackedScene" uid="uid://dibsl187r5dm6" path="res://Scenes/Enemies/enemy_knight.tscn" id="4_bolh6"]
+[ext_resource type="PackedScene" uid="uid://b61qfosyp44br" path="res://Scenes/Stages/statue_test.tscn" id="4_kj45d"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_5umtl")
@@ -14,5 +14,5 @@ position = Vector2(-103, 230)
 [node name="Player" parent="." instance=ExtResource("2_afue0")]
 position = Vector2(-178, 253)
 
-[node name="ForestStage1" parent="." instance=ExtResource("3_ki2fu")]
-script = ExtResource("1_5umtl")
+[node name="StatueTest" parent="." instance=ExtResource("4_kj45d")]
+position = Vector2(-218, 272)

@@ -12,7 +12,7 @@ class_name NPCBase
 
 func _ready():
 	interact_icon.visible = false
-	text_speed.set_wait_time(.05) # time between letters
+	text_speed.set_wait_time(.04) # time between letters
 	text_timeout.set_wait_time(4)
 	text_box.clear()
 	text_box.z_index = 1

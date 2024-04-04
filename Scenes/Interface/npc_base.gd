@@ -28,7 +28,7 @@ func speak_text(text : String):
 		text_speed.start()
 		text_box.add_text(letter)
 		await text_speed.timeout
-	is_speaking = false
 	text_timeout.start()
 	await text_timeout.timeout
+	is_speaking = false
 	text_box.clear()

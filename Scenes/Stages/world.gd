@@ -2,8 +2,8 @@ extends Node2D
 
 @onready var player : PackedScene = preload("res://Scenes/Player/player.tscn")
 
-@onready var beach_stage_2 : PackedScene = preload("res://Scenes/Stages/Beach/beach_stage_2.tscn")
-@onready var forest_stage_1 : PackedScene = preload("res://Scenes/Stages/Forest/forest_stage_1.tscn")
+@onready var beach_stage_2 : PackedScene = preload("res://Scenes/Stages/1-Beach/beach_stage_2.tscn")
+@onready var forest_stage_1 : PackedScene = preload("res://Scenes/Stages/2-Forest/forest_stage_1.tscn")
 
 @onready var current_stage : Node = null
 @onready var player_inst : Node = null

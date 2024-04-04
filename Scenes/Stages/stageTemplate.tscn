@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1owfsrioirqm"]
+[gd_scene load_steps=10 format=3 uid="uid://c1owfsrioirqm"]
 
-[ext_resource type="PackedScene" uid="uid://dpxt2ugpyaslm" path="res://Scenes/Player/player.tscn" id="1_lqatt"]
 [ext_resource type="Texture2D" uid="uid://bsqixhrdwjq40" path="res://Assets/Sprites/World/BrickTile.png" id="2_xk8a4"]
 [ext_resource type="Texture2D" uid="uid://cif4jt0sdxxgr" path="res://Assets/Sprites/World/Beach/BeachTileset.png" id="3_h6gco"]
 [ext_resource type="Texture2D" uid="uid://ckq3vdix01bqi" path="res://Assets/Sprites/World/HalfTile.png" id="3_mwcec"]
@@ -82,8 +81,6 @@ sources/3 = SubResource("TileSetAtlasSource_xcx27")
 sources/2 = SubResource("TileSetAtlasSource_qdukx")
 
 [node name="StageTemplate" type="Node2D"]
-
-[node name="Player" parent="." instance=ExtResource("1_lqatt")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_typ1f")

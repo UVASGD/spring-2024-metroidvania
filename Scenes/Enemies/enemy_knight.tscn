@@ -11,6 +11,7 @@ size = Vector2(22, 45)
 size = Vector2(22, 45)
 
 [node name="EnemyKnight" instance=ExtResource("1_klx6c")]
+position = Vector2(-3, -25)
 script = ExtResource("2_wyyfc")
 
 [node name="Sprite2D" parent="." index="0"]
@@ -21,7 +22,7 @@ position = Vector2(3, 2.5)
 shape = SubResource("RectangleShape2D_0who7")
 
 [node name="CollisionShape2D" parent="." index="2"]
-position = Vector2(3, 3)
+position = Vector2(3, 2.75)
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2(3, 2.5)

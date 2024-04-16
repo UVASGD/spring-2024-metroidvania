@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdfg5xqyn5qkv"]
+
+[ext_resource type="PackedScene" uid="uid://btsltmgtajvmd" path="res://Scenes/hitbox.tscn" id="1_la6qt"]
+[ext_resource type="Texture2D" uid="uid://cjvt3f0raq8yh" path="res://Assets/Sprites/Player/PlayerAttack2.png" id="2_yeiji"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cno1j"]
+radius = 12.0416
+
+[node name="PlayerAttack2" instance=ExtResource("1_la6qt")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CircleShape2D_cno1j")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_yeiji")

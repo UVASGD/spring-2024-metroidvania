@@ -1,8 +1,8 @@
 extends Hitbox
 
-@onready var sprite = $Sprite2D
+@onready var sprite : Object = $Sprite2D
 @onready var anim_player : Object = $AnimationPlayer
-@onready var parent : Node2D
+@onready var parent : Node2D = null
 
 @onready var direction_facing
 
@@ -15,5 +15,6 @@ func _ready():
 	await anim_player.animation_finished
 	self.queue_free()
 
-#func _process(delta):
-	#self.global_positon = parent.global_position + Vector2(15 * self.direction_facing, -15)
+func _process(_delta):
+	if parent != null:
+		self.global_position = parent.global_position + Vector2(25 * self.direction_facing, -15)

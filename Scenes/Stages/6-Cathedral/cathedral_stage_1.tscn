@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bugalqy7di4sa"]
+
+[ext_resource type="PackedScene" uid="uid://c1owfsrioirqm" path="res://Scenes/Stages/stageTemplate.tscn" id="1_ci47p"]
+
+[node name="CathedralStage1" instance=ExtResource("1_ci47p")]
+
+[node name="TileMap" parent="." index="0"]
+modulate = Color(0.164706, 0, 0.0117647, 1)
+
+[node name="BackgroundColor" parent="ParallaxBackground" index="0"]
+modulate = Color(1, 0.592157, 0.458824, 1)
+
+[node name="FogColor" parent="." index="2"]
+color = Color(1, 0.666667, 0.639216, 0.0784314)

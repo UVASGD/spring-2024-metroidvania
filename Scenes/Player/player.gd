@@ -81,11 +81,10 @@ func dash():
 func spawn_attack1():
 	if(attack_timer.is_stopped()):
 		var attack1_inst = attack1.instantiate()
-		attack1_inst.global_position = self.global_position + Vector2(25 * self.direction_facing, -15)
 		attack1_inst.direction_facing = self.direction_facing
-		#attack_inst.parent = self
 		attack1_inst.damage = attack1_damage
 		get_parent().add_child(attack1_inst)
+		attack1_inst.parent = self
 		attack_timer.start()
 
 func _on_hurtbox_area_entered(area):

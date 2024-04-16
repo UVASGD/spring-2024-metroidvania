@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d4imk8o8pdsl1" path="res://Scenes/hurtbox.tscn" id="8_lervm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hf7u"]
-size = Vector2(12, 26.0102)
+size = Vector2(12, 25.7635)
 
 [sub_resource type="Animation" id="Animation_sseod"]
 length = 0.001
@@ -100,7 +100,7 @@ _data = {
 size = Vector2(12, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3v2r"]
-size = Vector2(29, 29)
+size = Vector2(29, 29.5)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, 0.241557)
@@ -116,7 +116,7 @@ hframes = 6
 vframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -13.2365)
+position = Vector2(0, -13.1233)
 shape = SubResource("RectangleShape2D_7hf7u")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -152,7 +152,7 @@ collision_layer = 2
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
-position = Vector2(0, -15.2416)
+position = Vector2(0, -14.9916)
 shape = SubResource("RectangleShape2D_d3v2r")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

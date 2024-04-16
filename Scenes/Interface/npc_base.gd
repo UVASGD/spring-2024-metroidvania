@@ -8,11 +8,11 @@ class_name NPCBase
 @onready var text_timeout : Object = $TextTimeout
 
 @onready var is_speaking : bool = false
-@export var dialogue : String
+@export var dialogue : Array
 
 func _ready():
 	interact_icon.visible = false
-	text_speed.set_wait_time(.05) # time between letters
+	text_speed.set_wait_time(.04) # time between letters
 	text_timeout.set_wait_time(4)
 	text_box.clear()
 	text_box.z_index = 1
@@ -22,13 +22,15 @@ func interact():
 		text_box.clear()
 		speak_text(dialogue)
 
-func speak_text(text : String):
+func speak_text(text : Array):
 	is_speaking = true
-	for letter in text:
-		text_speed.start()
-		text_box.add_text(letter)
-		await text_speed.timeout
-	is_speaking = false
+	for line in text:
+		for letter in line:
+			text_speed.start()
+			text_box.add_text(letter)
+			await text_speed.timeout
+		text_box.clear()
 	text_timeout.start()
 	await text_timeout.timeout
+	is_speaking = false
 	text_box.clear()

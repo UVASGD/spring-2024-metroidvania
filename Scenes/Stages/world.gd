@@ -2,15 +2,29 @@ extends Node2D
 
 @onready var player : PackedScene = preload("res://Scenes/Player/player.tscn")
 
-@onready var beach_stage_2 : PackedScene = preload("res://Scenes/Stages/Beach/beach_stage_2.tscn")
-@onready var forest_stage_1 : PackedScene = preload("res://Scenes/Stages/Forest/forest_stage_1.tscn")
+@onready var beach_stage_1 : PackedScene = preload("res://Scenes/Stages/1-Beach/beach_stage_1.tscn")
+@onready var beach_stage_2 : PackedScene = preload("res://Scenes/Stages/1-Beach/beach_stage_2.tscn")
+#@onready var beach_stage_3 : PackedScene = preload("res://Scenes/Stages/1-Beach/beach_stage_3.tscn")
+
+@onready var forest_stage_1 : PackedScene = preload("res://Scenes/Stages/2-Forest/forest_stage_1.tscn")
+#@onready var forest_stage_2 : PackedScene = preload("res://Scenes/Stages/2-Forest/forest_stage_2.tscn")
+#@onready var forest_stage_3 : PackedScene = preload("res://Scenes/Stages/2-Forest/forest_stage_3.tscn")
+
+@onready var cathedral_stage_1 : PackedScene = preload("res://Scenes/Stages/6-Cathedral/cathedral_stage_1.tscn")
+
+@onready var beach_stages = [beach_stage_1, beach_stage_2]
+@onready var forest_stages = [forest_stage_1]
+@onready var cathedral_stages = [cathedral_stage_1]
+
+@onready var stages = [beach_stages, forest_stages, cathedral_stages]
+
 
 @onready var current_stage : Node = null
 @onready var player_inst : Node = null
 
 func _ready():
 	RenderingServer.set_default_clear_color(Color.LIGHT_SLATE_GRAY)
-	spawn_stage(beach_stage_2)
+	spawn_stage(beach_stage_1)
 	spawn_player()
 	
 func _process(_delta):

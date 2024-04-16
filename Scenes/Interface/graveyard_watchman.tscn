@@ -8,6 +8,7 @@
 size = Vector2(76, 34)
 
 [node name="GraveyardWatchman" instance=ExtResource("1_8yw0t")]
+position = Vector2(0, -16)
 texture = ExtResource("2_i3vgt")
 script = ExtResource("3_xi3aj")
 

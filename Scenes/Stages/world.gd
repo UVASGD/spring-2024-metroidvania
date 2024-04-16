@@ -24,7 +24,7 @@ extends Node2D
 
 func _ready():
 	RenderingServer.set_default_clear_color(Color.LIGHT_SLATE_GRAY)
-	spawn_stage(beach_stage_1)
+	spawn_stage(beach_stage_2)
 	spawn_player()
 	
 func _process(_delta):

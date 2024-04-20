@@ -1,13 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://cug5bni84m80o"]
+[gd_scene load_steps=4 format=3 uid="uid://cug5bni84m80o"]
 
 [ext_resource type="PackedScene" uid="uid://ceht6q71wt2cq" path="res://Scenes/Interface/main_menu_buttons.tscn" id="1_wt5uf"]
 [ext_resource type="Script" path="res://Scenes/Interface/main_menu.gd" id="1_x2lkc"]
+[ext_resource type="Texture2D" uid="uid://bmf6j45nwip6i" path="res://Assets/Sprites/Interface/gameLogo.png" id="2_xaqe1"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_x2lkc")
 
+[node name="GameLogo" type="Sprite2D" parent="."]
+position = Vector2(595, 196)
+scale = Vector2(3, 3)
+texture = ExtResource("2_xaqe1")
+
 [node name="MainMenuButtons" parent="." instance=ExtResource("1_wt5uf")]
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -576.0
-offset_bottom = -324.0
+offset_left = 490.0
+offset_top = 292.0
+offset_right = 490.0
+offset_bottom = 292.0
+scale = Vector2(2.5, 2.5)

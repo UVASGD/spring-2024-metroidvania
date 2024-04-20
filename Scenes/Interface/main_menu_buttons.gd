@@ -1,7 +1,15 @@
 extends Control
 
+@onready var main_menu : Node = get_parent()
+
 func _on_button_pressed():
-	pass # Replace with function body.
+	if main_menu.interactable:
+		pass # Replace with function body.
+
+func _on_credits_pressed():
+	if main_menu.interactable:
+		pass # Replace with function body.
 
 func _on_quit_pressed():
-	get_tree().quit()
+	if main_menu.interactable:
+		get_tree().quit()

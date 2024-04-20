@@ -10,21 +10,31 @@ script = ExtResource("1_rnier")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 510.0
-offset_top = 270.0
-offset_right = 569.0
-offset_bottom = 291.0
-scale = Vector2(2.5, 2.5)
+offset_right = 59.0
+offset_bottom = 46.0
+alignment = 1
 
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_rfryl")
+theme_override_font_sizes/font_size = 15
 text = "New Game"
+flat = true
+
+[node name="Credits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rfryl")
+theme_override_font_sizes/font_size = 15
+text = "Credits"
+flat = true
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_rfryl")
-text = "New Game"
+theme_override_font_sizes/font_size = 15
+text = "Quit"
+flat = true
 
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

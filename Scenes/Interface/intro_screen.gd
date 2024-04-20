@@ -14,7 +14,7 @@ func _ready():
 	text_speed.set_wait_time(.05) # time between letters
 	text_box.clear()
 	timer.one_shot = true
-	timer.wait_time = 1
+	timer.wait_time = 0.5
 	timer.start()
 	await timer.timeout
 	var tween = create_tween()

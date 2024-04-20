@@ -25,11 +25,18 @@ extends Node2D
 @onready var current_stage : Node = null
 @onready var player_inst : Node = null
 
+############################################ DEBUGGING ############################################
+
+@onready var skip_intro : bool = true
+
 func _ready():
 	camera.global_position = Vector2(0, -250)
 	RenderingServer.set_default_clear_color(Color.LIGHT_SLATE_GRAY)
 	spawn_stage(beach_stage_1)
-	spawn_intro_screen()
+	if !skip_intro:
+		spawn_intro_screen()
+	else:
+		end_intro()
 	#spawn_player()
 
 func _process(_delta):
@@ -40,9 +47,9 @@ func _process(_delta):
 
 func end_intro():
 	var tween = create_tween()
-	tween.set_ease(Tween.EASE_OUT)
+	#tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_EXPO)
-	tween.tween_property(camera, "global_position", Vector2(0, -50), 6)
+	tween.tween_property(camera, "global_position", Vector2(0, -50), 5)
 	await tween.finished
 	spawn_main_menu()
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1owfsrioirqm"]
+[gd_scene load_steps=11 format=3 uid="uid://c1owfsrioirqm"]
 
 [ext_resource type="Texture2D" uid="uid://bsqixhrdwjq40" path="res://Assets/Sprites/World/BrickTile.png" id="2_xk8a4"]
 [ext_resource type="Texture2D" uid="uid://cif4jt0sdxxgr" path="res://Assets/Sprites/World/Beach/BeachTileset.png" id="3_h6gco"]
 [ext_resource type="Texture2D" uid="uid://ckq3vdix01bqi" path="res://Assets/Sprites/World/HalfTile.png" id="3_mwcec"]
 [ext_resource type="Texture2D" uid="uid://dtt8oqse5mom5" path="res://Assets/Sprites/World/Forest/ForestTilemap.png" id="4_21qtx"]
+[ext_resource type="PackedScene" uid="uid://ckco7kwl380yy" path="res://Scenes/Stages/level_exit.tscn" id="5_5xelq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwsqa"]
 texture = ExtResource("2_xk8a4")
@@ -131,3 +132,6 @@ offset_top = -1386.0
 offset_right = 2778.0
 offset_bottom = 932.0
 color = Color(1, 0.631373, 0.988235, 0.0784314)
+
+[node name="LevelExit" parent="." instance=ExtResource("5_5xelq")]
+position = Vector2(2413, -176)

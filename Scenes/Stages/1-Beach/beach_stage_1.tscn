@@ -106,3 +106,6 @@ visibility_rect = Rect2(0, 0, 2880, 1280)
 
 [node name="FogColor" parent="." index="3"]
 color = Color(0.160784, 0.262745, 0.458824, 0.152941)
+
+[node name="LevelExit" parent="." index="4"]
+position = Vector2(705, -87)

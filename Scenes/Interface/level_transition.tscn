@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://t17savdh8i8l"]
+
+[ext_resource type="Script" path="res://Scenes/Interface/level_transition.gd" id="1_jcqt3"]
+
+[node name="LevelTransition" type="CanvasLayer"]
+script = ExtResource("1_jcqt3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -26.0
+offset_top = -22.0
+offset_right = 1176.0
+offset_bottom = 674.0
+
+[node name="Timer" type="Timer" parent="."]

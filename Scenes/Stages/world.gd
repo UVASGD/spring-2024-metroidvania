@@ -2,8 +2,10 @@ extends Node2D
 
 @onready var intro_screen : PackedScene = preload("res://Scenes/Interface/intro_screen.tscn")
 @onready var main_menu : PackedScene = preload("res://Scenes/Interface/main_menu.tscn")
+@onready var level_transition : PackedScene = preload("res://Scenes/Interface/level_transition.tscn")
 
 @onready var player : PackedScene = preload("res://Scenes/Player/player.tscn")
+@onready var player_inst : Node = null
 
 @onready var camera : Node = $Camera2D
 
@@ -17,13 +19,9 @@ extends Node2D
 #@onready var cathedral_stage_2 : PackedScene = preload("res://Scenes/Stages/6-Cathedral/cathedral_stage_2.tscn")
 #@onready var cathedral_stage_3 : PackedScene = preload("res://Scenes/Stages/6-Cathedral/cathedral_stage_3.tscn")
 
-@onready var beach_stages = [beach_stage_1, beach_stage_2]
-@onready var forest_stages = [forest_stage_1]
-@onready var cathedral_stages = [cathedral_stage_1]
-@onready var stages = [beach_stages, forest_stages, cathedral_stages]
-
+@onready var stages = [beach_stage_1, beach_stage_2, forest_stage_1, cathedral_stage_1]
+@onready var stage_index : int = 0
 @onready var current_stage : Node = null
-@onready var player_inst : Node = null
 
 ############################################ DEBUGGING ############################################
 
@@ -43,7 +41,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("test_input"):
 		change_stage(forest_stage_1)
 	if player_inst and player_inst.game_start:
-		camera.global_position = player_inst.global_position
+		camera.global_position = player_inst.global_position + Vector2(0, -40)
 
 func start_game():
 	player_inst.game_start = true
@@ -63,6 +61,18 @@ func spawn_main_menu():
 func spawn_intro_screen():
 	var intro_inst = intro_screen.instantiate()
 	add_child(intro_inst)
+
+func end_level():
+	if player_inst:
+		player_inst.is_interacting = true
+	var transition_inst = level_transition.instantiate()
+	add_child(transition_inst)
+
+func next_level():
+	stage_index += 1
+	change_stage(stages[stage_index])
+	if player_inst:
+		player_inst.is_interacting = false
 
 func change_stage(new_stage : PackedScene):
 	if current_stage != null:

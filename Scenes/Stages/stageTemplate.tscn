@@ -121,7 +121,6 @@ motion_scale = Vector2(1.05, 1.05)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 
 [node name="ParallaxLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-1, -2)
 motion_scale = Vector2(1.1, 1.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer1"]

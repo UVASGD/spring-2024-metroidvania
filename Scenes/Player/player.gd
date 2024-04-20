@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @onready var attack1 : PackedScene = preload("res://Scenes/Player/player_attack1.tscn")
-@onready var attack2 : PackedScene = preload("res://Scenes/Player/player_attack_2.tscn")
+@onready var attack2 : PackedScene = preload("res://Scenes/Player/player_attack2.tscn")
 
 const gravity_vector : Vector2 = Vector2(0, 1)
 const gravity_magnitude : int = 800
@@ -22,13 +22,18 @@ const gravity_magnitude : int = 800
 @export var SPEED : float = 2000.0
 @export var VELOCITY : float = 0.0
 
-@export var direction_facing = 1
+@onready var has_attack1 : bool = true
+@onready var has_attack2 : bool = true
+
+@onready var direction_facing = 1
 @onready var is_dashing : bool = false
 @onready var is_attacking : bool = false
 
 @onready var interactable_area_count : int = 0
 @onready var is_interacting : bool = false
 @onready var can_interact : bool = false
+
+@onready var world : Node = get_parent()
 
 func _ready():
 	attack_timer.wait_time = 0.75
@@ -48,14 +53,16 @@ func get_inputs():
 				jump()
 			if Input.is_action_just_pressed("dash"):
 				dash()
-			if Input.is_action_just_pressed("attack1"):
+			if Input.is_action_just_pressed("attack1") and has_attack1:
 				spawn_attack1()
-			if Input.is_action_just_pressed("attack2"):
+			if Input.is_action_just_pressed("attack2") and has_attack2:
 				spawn_attack2()
 			if is_on_wall_only() and Input.is_action_just_pressed("jump"):
 				wall_jump()
 			if Input.is_action_just_pressed("interact") and interactable_area_count > 0:
 				interact()
+			if Input.is_action_just_pressed("pause"):
+				print("pause")
 
 ######################################## MOVEMENT FUNCTIONS ########################################
 func do_movement(delta):

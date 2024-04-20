@@ -122,6 +122,8 @@ shape = SubResource("RectangleShape2D_7hf7u")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -35)
 zoom = Vector2(3, 3)
+limit_left = -480
+limit_right = 2400
 position_smoothing_enabled = true
 
 [node name="CoyoteJumpTimer" type="Timer" parent="."]

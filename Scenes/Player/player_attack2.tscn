@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bdfg5xqyn5qkv"]
 
-[ext_resource type="PackedScene" uid="uid://btsltmgtajvmd" path="res://Scenes/hitbox.tscn" id="1_la6qt"]
-[ext_resource type="Script" path="res://Scenes/Player/player_attack_2.gd" id="2_4qn2a"]
-[ext_resource type="Texture2D" uid="uid://cjvt3f0raq8yh" path="res://Assets/Sprites/Player/PlayerAttack2.png" id="2_yeiji"]
+[ext_resource type="PackedScene" uid="uid://btsltmgtajvmd" path="res://Scenes/hitbox.tscn" id="1_xgbdy"]
+[ext_resource type="Script" path="res://Scenes/Player/player_attack2.gd" id="2_6ipfu"]
+[ext_resource type="Texture2D" uid="uid://cjvt3f0raq8yh" path="res://Assets/Sprites/Player/PlayerAttack2.png" id="3_yyaxf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cno1j"]
 radius = 12.0416
@@ -15,17 +15,17 @@ initial_velocity_min = 150.0
 initial_velocity_max = 150.0
 gravity = Vector3(0, 0, 0)
 
-[node name="PlayerAttack2" instance=ExtResource("1_la6qt")]
+[node name="PlayerAttack2" instance=ExtResource("1_xgbdy")]
 scale = Vector2(0.25, 0.25)
 collision_layer = 8
 collision_mask = 4
-script = ExtResource("2_4qn2a")
+script = ExtResource("2_6ipfu")
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_cno1j")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
-texture = ExtResource("2_yeiji")
+texture = ExtResource("3_yyaxf")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="2"]
 amount = 20

@@ -154,6 +154,7 @@ position = Vector2(-480, -560)
 amount = 500
 process_material = SubResource("ParticleProcessMaterial_hpx7g")
 lifetime = 20.0
+preprocess = 20.0
 randomness = 1.0
 visibility_rect = Rect2(0, 0, 2880, 640)
 

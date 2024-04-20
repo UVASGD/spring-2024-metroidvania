@@ -119,17 +119,6 @@ vframes = 6
 position = Vector2(0, -13.1233)
 shape = SubResource("RectangleShape2D_7hf7u")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -35)
-zoom = Vector2(3, 3)
-limit_left = -480
-limit_right = 2400
-position_smoothing_enabled = true
-
-[node name="CoyoteJumpTimer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
 [node name="DashTimer" type="Timer" parent="."]
 one_shot = true
 

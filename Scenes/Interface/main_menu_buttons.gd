@@ -4,7 +4,7 @@ extends Control
 
 func _on_button_pressed():
 	if main_menu.interactable:
-		pass # Replace with function body.
+		main_menu.remove_menu()
 
 func _on_credits_pressed():
 	if main_menu.interactable:

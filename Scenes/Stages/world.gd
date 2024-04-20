@@ -33,17 +33,20 @@ func _ready():
 	camera.global_position = Vector2(0, -250)
 	RenderingServer.set_default_clear_color(Color.LIGHT_SLATE_GRAY)
 	spawn_stage(beach_stage_1)
+	spawn_player()
 	if !skip_intro:
 		spawn_intro_screen()
 	else:
 		end_intro()
-	#spawn_player()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("test_input"):
 		change_stage(forest_stage_1)
-	if player_inst:
+	if player_inst and player_inst.game_start:
 		camera.global_position = player_inst.global_position
+
+func start_game():
+	player_inst.game_start = true
 
 func end_intro():
 	var tween = create_tween()

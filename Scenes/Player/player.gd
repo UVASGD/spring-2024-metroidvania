@@ -9,7 +9,6 @@ const gravity_magnitude : int = 800
 
 @onready var anim_player : Object = $AnimationPlayer
 @onready var sprite : Object = $Sprite2D
-@onready var coyote_timer : Object = $CoyoteJumpTimer
 @onready var dash_timer : Object = $DashTimer
 @onready var attack_timer : Object = $AttackTimer
 @onready var interaction_area : Object = $InteractArea
@@ -19,12 +18,13 @@ const gravity_magnitude : int = 800
 @onready var attack1_damage : int = 20
 @onready var attack1_speed : float = 0.75
 
-@export var SPEED : float = 2000.0
+@export var SPEED : float = 0.0
 @export var VELOCITY : float = 0.0
 
 @onready var has_attack1 : bool = true
 @onready var has_attack2 : bool = true
 
+@onready var game_start : bool = false
 @onready var direction_facing = 1
 @onready var is_dashing : bool = false
 @onready var is_attacking : bool = false
@@ -46,23 +46,24 @@ func _physics_process(delta):
 	do_movement(delta)
 
 func get_inputs():
-	if !is_interacting:
-		SPEED = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-		if !is_dashing:
-			if is_on_floor() and Input.is_action_just_pressed("jump"):
-				jump()
-			if Input.is_action_just_pressed("dash"):
-				dash()
-			if Input.is_action_just_pressed("attack1") and has_attack1:
-				spawn_attack1()
-			if Input.is_action_just_pressed("attack2") and has_attack2:
-				spawn_attack2()
-			if is_on_wall_only() and Input.is_action_just_pressed("jump"):
-				wall_jump()
-			if Input.is_action_just_pressed("interact") and interactable_area_count > 0:
-				interact()
-			if Input.is_action_just_pressed("pause"):
-				print("pause")
+	if game_start:
+		if !is_interacting:
+			SPEED = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+			if !is_dashing:
+				if is_on_floor() and Input.is_action_just_pressed("jump"):
+					jump()
+				if Input.is_action_just_pressed("dash"):
+					dash()
+				if Input.is_action_just_pressed("attack1") and has_attack1:
+					spawn_attack1()
+				if Input.is_action_just_pressed("attack2") and has_attack2:
+					spawn_attack2()
+				if is_on_wall_only() and Input.is_action_just_pressed("jump"):
+					wall_jump()
+				if Input.is_action_just_pressed("interact") and interactable_area_count > 0:
+					interact()
+				if Input.is_action_just_pressed("pause"):
+					print("pause")
 
 ######################################## MOVEMENT FUNCTIONS ########################################
 func do_movement(delta):

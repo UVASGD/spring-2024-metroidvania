@@ -44,8 +44,13 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("test_input"):
 		change_stage(forest_stage_1)
+		stage_index = 2
 	if player_inst and player_inst.game_start:
 		camera.global_position = player_inst.global_position + Vector2(0, -40)
+	if stage_index == 0:
+		camera.limit_left = -480
+	else:
+		camera.limit_left = -48
 
 func start_game():
 	player_inst.game_start = true
@@ -75,6 +80,17 @@ func end_level():
 func next_level():
 	stage_index += 1
 	change_stage(stages[stage_index])
+
+func allow_player_control():
+	if player_inst:
+		player_inst.SPEED = 0.5
+	var timer := Timer.new()
+	timer.wait_time = 1
+	timer.one_shot = true
+	timer.autostart = true
+	add_child(timer)
+	await timer.timeout
+	timer.queue_free()
 	if player_inst:
 		player_inst.is_interacting = false
 
@@ -83,7 +99,7 @@ func change_stage(new_stage : PackedScene):
 		get_tree().paused = true
 		current_stage.queue_free()
 		spawn_stage(new_stage)
-		player_inst.global_position = Vector2(0, 0)
+		player_inst.global_position = Vector2(-200, 0)
 		get_tree().paused = false
 
 func spawn_stage(stage : PackedScene):

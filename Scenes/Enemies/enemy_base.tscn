@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d4imk8o8pdsl1" path="res://Scenes/hurtbox.tscn" id="2_bwsqo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0who7"]
-size = Vector2(22, 45)
+size = Vector2(22, 27)
 
 [node name="EnemyBase" type="CharacterBody2D"]
 collision_layer = 4
@@ -19,6 +19,8 @@ shape = SubResource("RectangleShape2D_0who7")
 [node name="Hurtbox" parent="." instance=ExtResource("2_bwsqo")]
 collision_layer = 4
 collision_mask = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 

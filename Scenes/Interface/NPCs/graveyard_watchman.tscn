@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://du4ndblb287m6"]
+
+[ext_resource type="PackedScene" uid="uid://2ddcfoel750w" path="res://Scenes/Interface/npc_base.tscn" id="1_ul1d6"]
+[ext_resource type="Script" path="res://Scenes/Interface/graveyard_watchman.gd" id="2_kj76v"]
+[ext_resource type="Texture2D" uid="uid://icthpdykafxj" path="res://Assets/Sprites/Interface/NPCs/GraveyardWatchman.png" id="2_qn1dj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tggbm"]
+size = Vector2(142, 69)
+
+[node name="GraveyardWatchman" instance=ExtResource("1_ul1d6")]
+script = ExtResource("2_kj76v")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -16)
+texture = ExtResource("2_qn1dj")
+
+[node name="InteractIcon" parent="." index="1"]
+position = Vector2(0, -81)
+
+[node name="TextBox" parent="." index="2"]
+offset_left = -56.0
+offset_top = -62.0
+offset_right = 35.0
+offset_bottom = -22.0
+
+[node name="CollisionShape2D" parent="InteractableArea" index="0"]
+position = Vector2(0, -34.5)
+shape = SubResource("RectangleShape2D_tggbm")

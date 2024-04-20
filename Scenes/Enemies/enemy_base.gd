@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name EnemyBase
 
+@onready var sprite : Node = $Sprite2D
+@onready var anim_player : Node = $AnimationPlayer
+
 const gravity_vector : Vector2 = Vector2(0, 1)
 const gravity_magnitude : int = 800
 

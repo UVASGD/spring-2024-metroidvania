@@ -7,11 +7,11 @@ class_name Player
 const gravity_vector : Vector2 = Vector2(0, 1)
 const gravity_magnitude : int = 800
 
-@onready var anim_player : Object = $AnimationPlayer
-@onready var sprite : Object = $Sprite2D
-@onready var dash_timer : Object = $DashTimer
-@onready var attack_timer : Object = $AttackTimer
-@onready var interaction_area : Object = $InteractArea
+@onready var anim_player : Node = $AnimationPlayer
+@onready var sprite : Node = $Sprite2D
+@onready var dash_timer : Node = $DashTimer
+@onready var attack_timer : Node = $AttackTimer
+@onready var interaction_area : Node = $InteractArea
 
 @onready var max_health : int = 100
 @onready var current_health : int = max_health
@@ -36,6 +36,7 @@ const gravity_magnitude : int = 800
 @onready var world : Node = get_parent()
 
 func _ready():
+	attack_timer.one_shot = true
 	attack_timer.wait_time = 0.75
 	dash_timer.wait_time = 1.0
 
@@ -63,7 +64,7 @@ func get_inputs():
 				if Input.is_action_just_pressed("interact") and interactable_area_count > 0:
 					interact()
 				if Input.is_action_just_pressed("pause"):
-					print("pause")
+					get_tree().paused = true
 
 ######################################## MOVEMENT FUNCTIONS ########################################
 func do_movement(delta):
@@ -99,12 +100,14 @@ func spawn_attack1():
 		attack_timer.start()
 
 func spawn_attack2():
-	var attack2_inst = attack2.instantiate()
-	attack2_inst.global_position = self.global_position + Vector2(0, -15)
-	attack2_inst.direction_facing = self.direction_facing
-	attack2_inst.damage = attack1_damage
-	get_parent().add_child(attack2_inst)
-	attack2_inst.parent = self
+	if(attack_timer.is_stopped()):
+		var attack2_inst = attack2.instantiate()
+		attack2_inst.global_position = self.global_position + Vector2(0, -15)
+		attack2_inst.direction_facing = self.direction_facing
+		attack2_inst.damage = attack1_damage
+		get_parent().add_child(attack2_inst)
+		attack2_inst.parent = self
+		attack_timer.start()
 
 func _on_hurtbox_area_entered(area):
 	receive_damage(area.damage)

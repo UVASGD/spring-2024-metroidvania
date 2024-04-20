@@ -3,7 +3,7 @@ extends CanvasLayer
 @onready var timer : Node = $Timer
 @onready var color_rect : Node = $ColorRect
 @onready var text_speed : Node = $TextSpeed
-@onready var text_box : Object = $TextBox
+@onready var text_box : Node = $TextBox
 
 @onready var world : Node = get_parent()
 

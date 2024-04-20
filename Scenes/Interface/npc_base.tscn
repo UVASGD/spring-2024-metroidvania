@@ -4,8 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://k0av7e5caj6f" path="res://Assets/Sprites/Interface/NPCInteractIcon.png" id="2_h534u"]
 [ext_resource type="FontFile" uid="uid://c5by2ha1q7a14" path="res://Assets/Resources/m5x7.ttf" id="3_vp448"]
 
-[node name="NPCBase" type="Sprite2D"]
+[node name="NPCBase" type="Node2D"]
 script = ExtResource("1_i3rkv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="InteractIcon" type="Sprite2D" parent="."]
 texture = ExtResource("2_h534u")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://60pds0vqmqe4"]
+[gd_scene load_steps=11 format=3 uid="uid://60pds0vqmqe4"]
 
 [ext_resource type="PackedScene" uid="uid://c1owfsrioirqm" path="res://Scenes/Stages/stageTemplate.tscn" id="1_al3mb"]
 [ext_resource type="Texture2D" uid="uid://cjns7pkq4qcp5" path="res://Assets/Sprites/World/Beach/Beach-4-2.png" id="2_gydb8"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://kgpbr84a3ofb" path="res://Assets/Sprites/World/Beach/Beach-3-2.png" id="5_8opsu"]
 [ext_resource type="Texture2D" uid="uid://cnm8m7g8es2us" path="res://Assets/Sprites/World/Beach/Beach-2-2.png" id="6_7dsjg"]
 [ext_resource type="Texture2D" uid="uid://bvy5mkfqrn126" path="res://Assets/Sprites/World/Beach/Beach-2-1.png" id="7_7tae2"]
+[ext_resource type="PackedScene" uid="uid://d1vhlcg4eqiak" path="res://Scenes/Enemies/enemy_villager.tscn" id="8_k713n"]
+[ext_resource type="PackedScene" uid="uid://du4ndblb287m6" path="res://Scenes/Interface/NPCs/graveyard_watchman.tscn" id="9_edqhm"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3losy"]
 particle_flag_disable_z = true
@@ -109,3 +111,9 @@ color = Color(0.160784, 0.262745, 0.458824, 0.152941)
 
 [node name="LevelExit" parent="." index="4"]
 position = Vector2(705, -87)
+
+[node name="EnemyVillager" parent="." index="5" instance=ExtResource("8_k713n")]
+position = Vector2(219, -35)
+
+[node name="GraveyardWatchman" parent="." index="6" instance=ExtResource("9_edqhm")]
+position = Vector2(460, -2)

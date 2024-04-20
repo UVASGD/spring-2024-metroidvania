@@ -26,6 +26,7 @@ extends Node2D
 ############################################ DEBUGGING ############################################
 
 @onready var skip_intro : bool = true
+@onready var skip_main_menu : bool = true
 
 func _ready():
 	camera.global_position = Vector2(0, -250)
@@ -35,7 +36,10 @@ func _ready():
 	if !skip_intro:
 		spawn_intro_screen()
 	else:
-		end_intro()
+		if !skip_main_menu:
+			end_intro()
+		else:
+			start_game()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("test_input"):

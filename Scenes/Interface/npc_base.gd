@@ -1,19 +1,22 @@
-extends Sprite2D
+extends Node2D
 class_name NPCBase
 
-@onready var interact_icon : Object = $InteractIcon
-@onready var interactable_area : Object = $InteractableArea
-@onready var text_box : Object = $TextBox
-@onready var text_speed : Object = $TextSpeed
-@onready var text_timeout : Object = $TextTimeout
+@onready var world : Node = get_parent().get_parent()
+
+@onready var sprite : Node = $Sprite2D
+@onready var interact_icon : Node = $InteractIcon
+@onready var interactable_area : Node = $InteractableArea
+@onready var text_box : Node = $TextBox
+@onready var text_speed : Node = $TextSpeed
+@onready var text_timeout : Node = $TextTimeout
 
 @onready var is_speaking : bool = false
 @export var dialogue : Array
 
 func _ready():
 	interact_icon.visible = false
-	text_speed.set_wait_time(.04) # time between letters
-	text_timeout.set_wait_time(4)
+	text_speed.set_wait_time(.05) # time between letters
+	text_timeout.set_wait_time(5)
 	text_box.clear()
 	text_box.z_index = 1
 

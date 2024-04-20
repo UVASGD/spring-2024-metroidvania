@@ -1,7 +1,7 @@
 extends Hitbox
 
-@onready var sprite : Object = $Sprite2D
-@onready var anim_player : Object = $AnimationPlayer
+@onready var sprite : Node = $Sprite2D
+@onready var anim_player : Node = $AnimationPlayer
 @onready var parent : Node2D = null
 
 @onready var direction_facing

@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @onready var attack1 : PackedScene = preload("res://Scenes/Player/player_attack1.tscn")
+@onready var attack2 : PackedScene = preload("res://Scenes/Player/player_attack_2.tscn")
 
 const gravity_vector : Vector2 = Vector2(0, 1)
 const gravity_magnitude : int = 800
@@ -49,6 +50,8 @@ func get_inputs():
 				dash()
 			if Input.is_action_just_pressed("attack1"):
 				spawn_attack1()
+			if Input.is_action_just_pressed("attack2"):
+				spawn_attack2()
 			if is_on_wall_only() and Input.is_action_just_pressed("jump"):
 				wall_jump()
 			if Input.is_action_just_pressed("interact") and interactable_area_count > 0:
@@ -86,6 +89,14 @@ func spawn_attack1():
 		get_parent().add_child(attack1_inst)
 		attack1_inst.parent = self
 		attack_timer.start()
+
+func spawn_attack2():
+	var attack2_inst = attack2.instantiate()
+	attack2_inst.global_position = self.global_position + Vector2(0, -15)
+	attack2_inst.direction_facing = self.direction_facing
+	attack2_inst.damage = attack1_damage
+	get_parent().add_child(attack2_inst)
+	attack2_inst.parent = self
 
 func _on_hurtbox_area_entered(area):
 	receive_damage(area.damage)

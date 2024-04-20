@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://duq5u2y1cxl7o"]
+
+[ext_resource type="Texture2D" uid="uid://gt04ffujeq4t" path="res://Assets/Sprites/Interface/playerHealthbar/healthIcon.png" id="1_nie2j"]
+[ext_resource type="Texture2D" uid="uid://b67rabv6egpog" path="res://Assets/Sprites/Interface/playerHealthbar/over.png" id="2_176xy"]
+[ext_resource type="Texture2D" uid="uid://3vuwnuskscb4" path="res://Assets/Sprites/Interface/playerHealthbar/progress.png" id="3_wgx0v"]
+
+[node name="PlayerHUD" type="CanvasLayer"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_left = 52.0
+offset_top = 16.0
+offset_right = 95.0
+offset_bottom = 56.0
+scale = Vector2(2, 2)
+value = 100.0
+texture_over = ExtResource("2_176xy")
+texture_progress = ExtResource("3_wgx0v")
+tint_progress = Color(0.929412, 0.054902, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+texture = ExtResource("1_nie2j")

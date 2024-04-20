@@ -1,8 +1,11 @@
 extends Node2D
 
 @onready var intro_screen : PackedScene = preload("res://Scenes/Interface/intro_screen.tscn")
+@onready var main_menu : PackedScene = preload("res://Scenes/Interface/main_menu.tscn")
 
 @onready var player : PackedScene = preload("res://Scenes/Player/player.tscn")
+
+@onready var camera : Node = $Camera2D
 
 @onready var beach_stage_1 : PackedScene = preload("res://Scenes/Stages/1-Beach/beach_stage_1.tscn")
 @onready var beach_stage_2 : PackedScene = preload("res://Scenes/Stages/1-Beach/beach_stage_2.tscn")
@@ -19,19 +22,33 @@ extends Node2D
 @onready var cathedral_stages = [cathedral_stage_1]
 @onready var stages = [beach_stages, forest_stages, cathedral_stages]
 
-
 @onready var current_stage : Node = null
 @onready var player_inst : Node = null
 
 func _ready():
+	camera.global_position = Vector2(0, -250)
 	RenderingServer.set_default_clear_color(Color.LIGHT_SLATE_GRAY)
 	spawn_stage(beach_stage_1)
 	spawn_intro_screen()
 	#spawn_player()
-	
+
 func _process(_delta):
 	if Input.is_action_just_pressed("test_input"):
 		change_stage(forest_stage_1)
+	if player_inst:
+		camera.global_position = player_inst.global_position
+
+func end_intro():
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_EXPO)
+	tween.tween_property(camera, "global_position", Vector2(0, -50), 6)
+	await tween.finished
+	spawn_main_menu()
+
+func spawn_main_menu():
+	var main_menu_inst = main_menu.instantiate()
+	add_child(main_menu_inst)
 
 func spawn_intro_screen():
 	var intro_inst = intro_screen.instantiate()

@@ -18,9 +18,9 @@ offset_bottom = 753.0
 
 [node name="TextBox" type="RichTextLabel" parent="."]
 offset_left = 140.0
-offset_top = 335.0
+offset_top = 275.0
 offset_right = 782.0
-offset_bottom = 467.0
+offset_bottom = 407.0
 scale = Vector2(0.75, 0.75)
 theme_override_fonts/normal_font = ExtResource("2_deawf")
 theme_override_font_sizes/normal_font_size = 75

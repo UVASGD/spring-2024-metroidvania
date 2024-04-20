@@ -1,21 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceht6q71wt2cq"]
+[gd_scene load_steps=3 format=3 uid="uid://ceht6q71wt2cq"]
 
 [ext_resource type="FontFile" uid="uid://c5by2ha1q7a14" path="res://Assets/Resources/m5x7.ttf" id="1_rfryl"]
+[ext_resource type="Script" path="res://Scenes/Interface/main_menu_buttons.gd" id="1_rnier"]
 
 [node name="MainMenuButtons" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+script = ExtResource("1_rnier")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 510.0
+offset_top = 270.0
+offset_right = 569.0
+offset_bottom = 291.0
+scale = Vector2(2.5, 2.5)
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_rfryl")
-text = "test"
+text = "New Game"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_rfryl")
+text = "New Game"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -4,3 +4,10 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_5umtl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -300)
+zoom = Vector2(3, 3)
+limit_left = -480
+limit_right = 2400
+position_smoothing_enabled = true

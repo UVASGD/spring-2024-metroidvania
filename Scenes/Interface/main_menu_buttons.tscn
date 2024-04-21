@@ -35,6 +35,31 @@ theme_override_font_sizes/font_size = 15
 text = "Quit"
 flat = true
 
+[node name="Label" type="Label" parent="."]
+offset_left = -93.0
+offset_top = 3.0
+offset_right = 167.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("1_rfryl")
+text = "Kedrick Fudala - Director, Lead Programmer
+Nate Pawlas - Director
+Tyler Taute - Level Designer, Game Designer
+Saaswath Kumar - Artist, Game Designer
+Geethan Sundaram - Musician
+Kennedy Gordon - Game Designer, Sound Designer"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = -3.0
+offset_top = 104.0
+offset_right = 56.0
+offset_bottom = 124.0
+theme_override_fonts/font = ExtResource("1_rfryl")
+theme_override_font_sizes/font_size = 15
+text = "Back"
+flat = true
+
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

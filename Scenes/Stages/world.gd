@@ -6,6 +6,7 @@ extends Node2D
 
 @onready var player : PackedScene = preload("res://Scenes/Player/player.tscn")
 @onready var player_inst : Node = null
+@onready var game_start : bool = false
 
 @onready var camera : Node = $Camera2D
 @onready var audio_player : Node = $AudioStreamPlayer
@@ -36,7 +37,7 @@ extends Node2D
 ############################################ DEBUGGING ############################################
 
 @onready var skip_intro : bool = true
-@onready var skip_main_menu : bool = true
+@onready var skip_main_menu : bool = false
 
 func _ready():
 	camera.global_position = Vector2(0, -250)
@@ -61,21 +62,28 @@ func _process(_delta):
 		camera.limit_left = -480
 	else:
 		camera.limit_left = -48
+	if stage_index == 0 and game_start == true and audio_player.playing == false:
+		play_music(beach_music)
 
 func start_game():
+	game_start = true
+	play_music(title_to_beach_music)
 	if player_inst:
 		player_inst.get_up()
 
 func end_intro():
 	var tween = create_tween()
-	#tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(camera, "global_position", Vector2(0, -50), 5)
 	await tween.finished
 	spawn_main_menu()
 
-func spawn_main_menu():
+func play_music(audio : AudioStreamMP3):
+	audio_player.stream = audio
 	audio_player.play()
+
+func spawn_main_menu():
+	play_music(title_music)
 	var main_menu_inst = main_menu.instantiate()
 	add_child(main_menu_inst)
 

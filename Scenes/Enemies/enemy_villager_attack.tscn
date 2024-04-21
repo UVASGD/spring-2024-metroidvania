@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bjlryw8o412ki" path="res://Assets/Sprites/Enemies/Slashes.png" id="3_ypro6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eh0gr"]
-size = Vector2(12.6667, 6)
+size = Vector2(29.5, 15.6667)
 
 [sub_resource type="Animation" id="Animation_0d70j"]
 length = 0.001
@@ -46,18 +46,16 @@ _data = {
 }
 
 [node name="EnemyVillagerAttack" instance=ExtResource("1_ur085")]
-scale = Vector2(1.5, 1.5)
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("2_msb0w")
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(2.33333, 1)
+position = Vector2(12.75, -3)
 shape = SubResource("RectangleShape2D_eh0gr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="1"]
-position = Vector2(-6, -2.66667)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-8, -10)
 texture = ExtResource("3_ypro6")
 hframes = 13
 frame = 6

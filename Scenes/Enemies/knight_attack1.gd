@@ -12,9 +12,9 @@ func _ready():
 	timer.wait_time = 0.5
 	timer.start()
 	if direction_facing < 0:
-		sprite.flip_h = 1
+		self.scale = Vector2(-1.25, 1.25)
 	else:
-		sprite.flip_h = 0
+		self.scale = Vector2(1.25, 1.25)
 	#anim_player.play("attack1")
 	await timer.timeout
 	self.queue_free()

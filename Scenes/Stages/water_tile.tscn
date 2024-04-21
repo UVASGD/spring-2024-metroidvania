@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cuqdgldl0r4j0"]
+
+[node name="WaterTile" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

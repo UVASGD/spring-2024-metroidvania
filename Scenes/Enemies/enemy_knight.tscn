@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dibsl187r5dm6"]
+[gd_scene load_steps=13 format=3 uid="uid://dibsl187r5dm6"]
 
 [ext_resource type="PackedScene" uid="uid://cyi2ywmi5luxp" path="res://Scenes/Enemies/enemy_base.tscn" id="1_klx6c"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_knight.gd" id="2_wyyfc"]
 [ext_resource type="Texture2D" uid="uid://cj4cbngf4tdxm" path="res://Assets/Sprites/Enemies/KnightSpritesheet.png" id="3_hw6xl"]
+[ext_resource type="AudioStream" uid="uid://bggyatf7ow7ju" path="res://Assets/Sounds/59992__qubodup__swosh-sword-swing.mp3" id="4_ghl8a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf7o4"]
 size = Vector2(46, 52)
@@ -12,38 +13,6 @@ size = Vector2(22, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obf7r"]
 size = Vector2(22, 45)
-
-[sub_resource type="Animation" id="Animation_pprk3"]
-resource_name = "walk"
-length = 1.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [11, 12, 13, 14, 15, 16, 17, 18, 19]
-}
-
-[sub_resource type="Animation" id="Animation_1y16e"]
-resource_name = "idle"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
 
 [sub_resource type="Animation" id="Animation_4y2rg"]
 length = 0.001
@@ -93,6 +62,38 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_1y16e"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_pprk3"]
+resource_name = "walk"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_obnyt"]
 _data = {
 "RESET": SubResource("Animation_4y2rg"),
@@ -140,6 +141,9 @@ libraries = {
 [node name="AttackTimer" type="Timer" parent="." index="4"]
 
 [node name="TurnTimer" type="Timer" parent="." index="5"]
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("4_ghl8a")
 
 [connection signal="area_entered" from="Sprite2D/DetectPlayer" to="." method="_on_detect_player_area_entered"]
 [connection signal="area_exited" from="Sprite2D/DetectPlayer" to="." method="_on_detect_player_area_exited"]

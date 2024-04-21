@@ -4,6 +4,7 @@ class_name EnemyKnight
 @onready var attack_timer : Node = $AttackTimer
 @onready var turn_timer : Node = $TurnTimer
 @onready var raycast : Node = $Sprite2D/RayCast2D
+@onready var attack_audio : Node = $AttackAudio
 
 @onready var knight_attack : PackedScene = preload("res://Scenes/Enemies/knight_attack1.tscn")
 
@@ -42,6 +43,7 @@ func do_movement(delta):
 	move_and_slide()
 
 func attack():
+	attack_audio.play()
 	attacking = true
 	anim_player.play("attack")
 	await anim_player.animation_finished

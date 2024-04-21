@@ -9,9 +9,9 @@ extends Hitbox
 func _ready():
 	self.damage = 10
 	if direction_facing < 0:
-		sprite.flip_h = 1
+		self.scale = Vector2(-1, 1)
 	else:
-		sprite.flip_h = 0
+		self.scale = Vector2(1, 1)
 	anim_player.play("attack")
 	await anim_player.animation_finished
 	self.queue_free()

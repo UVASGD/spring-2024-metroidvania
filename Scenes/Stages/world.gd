@@ -37,7 +37,7 @@ extends Node2D
 ############################################ DEBUGGING ############################################
 
 @onready var skip_intro : bool = true
-@onready var skip_main_menu : bool = false
+@onready var skip_main_menu : bool = true
 
 func _ready():
 	camera.global_position = Vector2(0, -250)
@@ -72,6 +72,7 @@ func start_game():
 		player_inst.get_up()
 
 func end_intro():
+	play_music(title_music)
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(camera, "global_position", Vector2(0, -50), 5)
@@ -83,7 +84,6 @@ func play_music(audio : AudioStreamMP3):
 	audio_player.play()
 
 func spawn_main_menu():
-	play_music(title_music)
 	var main_menu_inst = main_menu.instantiate()
 	add_child(main_menu_inst)
 

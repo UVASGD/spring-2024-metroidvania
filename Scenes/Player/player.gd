@@ -15,6 +15,7 @@ const gravity_magnitude : int = 800
 @onready var player_hud : Node = $PlayerHUD
 @onready var health : Node = $PlayerHUD/Health
 @onready var health_bar : Node = $PlayerHUD/Health/HealthBar
+@onready var attack_audio : Node = $AttackAudio
 
 @onready var max_health : int = 100
 @onready var current_health : int = max_health
@@ -107,6 +108,7 @@ func dash():
 ######################################### COMBAT FUNCTIONS #########################################
 func spawn_attack1():
 	if(attack_timer.is_stopped()):
+		attack_audio.play()
 		var attack1_inst = attack1.instantiate()
 		attack1_inst.direction_facing = self.direction_facing
 		attack1_inst.damage = attack1_damage
@@ -125,6 +127,7 @@ func spawn_attack2():
 		attack_timer.start()
 
 func _on_hurtbox_area_entered(area):
+	print("aaa")
 	if !is_invulnerable:
 		receive_damage(area.damage)
 
@@ -161,6 +164,9 @@ func _on_interact_area_area_exited(area):
 		interactable_area_count -= 1
 
 func die():
+	self.is_interacting = true
+	anim_player.play("die")
+	await anim_player.animation_finished
 	get_tree().paused = true
 
 ######################################## SPRITE/ANIMATIONS #########################################

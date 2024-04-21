@@ -4,6 +4,7 @@ class_name EnemyVillager
 @onready var attack_timer : Node = $AttackTimer
 @onready var turn_timer : Node = $TurnTimer
 @onready var raycast : Node = $Sprite2D/RayCast2D
+@onready var attack_audio : Node = $AttackAudio
 
 @onready var villager_attack : PackedScene = preload("res://Scenes/Enemies/enemy_villager_attack.tscn")
 
@@ -42,6 +43,7 @@ func do_movement(delta):
 	move_and_slide()
 
 func attack():
+	attack_audio.play()
 	attacking = true
 	anim_player.play("attack")
 	await anim_player.animation_finished
@@ -51,7 +53,7 @@ func attack():
 func spawn_attack():
 	var attack_inst = villager_attack.instantiate()
 	attack_inst.direction_facing = self.direction_facing
-	attack_inst.global_position = self.global_position + Vector2(20 * direction_facing, -10)
+	attack_inst.global_position = self.global_position + Vector2(12 * direction_facing, -10)
 	get_parent().add_child(attack_inst)
 	attack_timer.start()
 

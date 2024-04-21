@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1vhlcg4eqiak"]
+[gd_scene load_steps=13 format=3 uid="uid://d1vhlcg4eqiak"]
 
 [ext_resource type="PackedScene" uid="uid://cyi2ywmi5luxp" path="res://Scenes/Enemies/enemy_base.tscn" id="1_xma7s"]
 [ext_resource type="Texture2D" uid="uid://b8wml8vjw42lv" path="res://Assets/Sprites/Enemies/VillagerSpritesheet.png" id="2_2hmaw"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_villager.gd" id="2_5tlll"]
+[ext_resource type="AudioStream" uid="uid://bggyatf7ow7ju" path="res://Assets/Sounds/59992__qubodup__swosh-sword-swing.mp3" id="4_2cccd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jn4ay"]
 size = Vector2(26, 43)
@@ -136,6 +137,10 @@ libraries = {
 [node name="AttackTimer" type="Timer" parent="." index="4"]
 
 [node name="TurnTimer" type="Timer" parent="." index="5"]
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="." index="6"]
+stream = ExtResource("4_2cccd")
+volume_db = -10.0
 
 [connection signal="area_entered" from="Sprite2D/DetectPlayer" to="." method="_on_detect_player_area_entered"]
 [connection signal="area_exited" from="Sprite2D/DetectPlayer" to="." method="_on_detect_player_area_exited"]

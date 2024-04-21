@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpxt2ugpyaslm"]
+[gd_scene load_steps=20 format=3 uid="uid://dpxt2ugpyaslm"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_63i3x"]
 [ext_resource type="Texture2D" uid="uid://bt2rc7ai6dilx" path="res://Assets/Sprites/Player/PlayerSpritesheet.png" id="2_hfi1l"]
 [ext_resource type="PackedScene" uid="uid://duq5u2y1cxl7o" path="res://Scenes/Interface/player_hud.tscn" id="4_2palu"]
+[ext_resource type="AudioStream" uid="uid://bggyatf7ow7ju" path="res://Assets/Sounds/59992__qubodup__swosh-sword-swing.mp3" id="5_t7xo1"]
 [ext_resource type="PackedScene" uid="uid://d4imk8o8pdsl1" path="res://Scenes/hurtbox.tscn" id="8_lervm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hf7u"]
@@ -21,6 +22,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_6v4se"]
+resource_name = "die"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 0.9, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 35, 34, 33, 32]
 }
 
 [sub_resource type="Animation" id="Animation_7nfrf"]
@@ -155,6 +172,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ixt1"]
 _data = {
 "RESET": SubResource("Animation_sseod"),
+"die": SubResource("Animation_6v4se"),
 "down": SubResource("Animation_7nfrf"),
 "fall": SubResource("Animation_ljtdb"),
 "get_up": SubResource("Animation_hqpyg"),
@@ -215,6 +233,9 @@ position = Vector2(0, -14.9916)
 shape = SubResource("RectangleShape2D_d3v2r")
 
 [node name="PlayerHUD" parent="." instance=ExtResource("4_2palu")]
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_t7xo1")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]

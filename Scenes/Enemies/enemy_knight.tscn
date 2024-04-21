@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dibsl187r5dm6"]
+[gd_scene load_steps=7 format=3 uid="uid://dibsl187r5dm6"]
 
 [ext_resource type="PackedScene" uid="uid://cyi2ywmi5luxp" path="res://Scenes/Enemies/enemy_base.tscn" id="1_klx6c"]
 [ext_resource type="Texture2D" uid="uid://3a0utkrkkpsv" path="res://Assets/Sprites/Enemies/KnightArmourCorrectSize.png" id="2_axwj7"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_knight.gd" id="2_wyyfc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0who7"]
+size = Vector2(22, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f38uy"]
 size = Vector2(22, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obf7r"]
@@ -23,6 +26,7 @@ shape = SubResource("RectangleShape2D_0who7")
 
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(3, 2.5)
+shape = SubResource("RectangleShape2D_f38uy")
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2(3, 2.5)

@@ -30,7 +30,6 @@ func _physics_process(delta):
 		SPEED = 5 * direction_facing
 	var collider = raycast.get_collider()
 	if collider is TileMap and turn_timer.is_stopped():
-		print("TURN")
 		direction_facing *= -1
 		turn_timer.start()
 

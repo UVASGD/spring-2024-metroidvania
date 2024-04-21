@@ -24,6 +24,15 @@ extends Node2D
 @onready var stage_index : int = 0
 @onready var current_stage : Node = null
 
+@onready var title_music : AudioStreamMP3 = preload("res://Assets/Sounds/mainmenu.mp3")
+@onready var title_to_beach_music : AudioStreamMP3 = preload("res://Assets/Sounds/beachtheme.mp3")
+@onready var beach_music : AudioStreamMP3 = preload("res://Assets/Sounds/beachloop.mp3")
+@onready var forest_music : AudioStreamMP3 = preload("res://Assets/Sounds/forestloop.mp3")
+@onready var cathedral_music : AudioStreamMP3 = preload("res://Assets/Sounds/cathedral.mp3")
+@onready var final_boss_music : AudioStreamMP3 = preload("res://Assets/Sounds/bossmusic.mp3")
+
+@onready var music = [title_music, title_to_beach_music, beach_music, forest_music, cathedral_music, final_boss_music]
+
 ############################################ DEBUGGING ############################################
 
 @onready var skip_intro : bool = true

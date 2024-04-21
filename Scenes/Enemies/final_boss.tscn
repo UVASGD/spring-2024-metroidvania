@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ceuqw60s8beh4"]
+[gd_scene load_steps=9 format=3 uid="uid://ceuqw60s8beh4"]
 
 [ext_resource type="PackedScene" uid="uid://cyi2ywmi5luxp" path="res://Scenes/Enemies/enemy_base.tscn" id="1_dewfk"]
-[ext_resource type="Texture2D" uid="uid://dd082wjy6lie6" path="res://Assets/Sprites/Pickups/HappyPickup.png" id="2_8wy4b"]
 [ext_resource type="Script" path="res://Scenes/Enemies/final_boss.gd" id="2_lujsw"]
+[ext_resource type="Texture2D" uid="uid://d7xmkt8ndtey" path="res://Assets/Sprites/Enemies/FinalBoss.png" id="3_hdml1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8gy5q"]
 size = Vector2(16, 16)
@@ -10,18 +10,61 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tngxw"]
 size = Vector2(16, 16)
 
+[sub_resource type="Animation" id="Animation_5q2te"]
+resource_name = "fly"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ixjlg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ml2y0"]
+_data = {
+"RESET": SubResource("Animation_ixjlg"),
+"fly": SubResource("Animation_5q2te")
+}
+
 [node name="FinalBoss" instance=ExtResource("1_dewfk")]
 position = Vector2(0, -8)
 script = ExtResource("2_lujsw")
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_8wy4b")
+texture = ExtResource("3_hdml1")
+hframes = 4
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_8gy5q")
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("RectangleShape2D_tngxw")
+
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_ml2y0")
+}
 
 [node name="AttackTimer" type="Timer" parent="." index="4"]
 

@@ -22,6 +22,7 @@ const gravity_magnitude : int = 800
 @onready var attack1_damage : int = 20
 @onready var attack1_speed : float = 0.75
 
+@onready var actual_speed : float = 30.0
 @export var SPEED : float = 0.0
 @export var VELOCITY : float = 0.0
 
@@ -37,6 +38,7 @@ const gravity_magnitude : int = 800
 @onready var interactable_area_count : int = 0
 @onready var is_interacting : bool = false
 @onready var can_interact : bool = false
+@onready var can_jump : bool = true
 
 @onready var world : Node = get_parent()
 
@@ -60,7 +62,7 @@ func get_inputs():
 		if !is_interacting:
 			SPEED = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 			if !is_dashing:
-				if is_on_floor() and Input.is_action_just_pressed("jump"):
+				if is_on_floor() and Input.is_action_just_pressed("jump") and can_jump:
 					jump()
 				if Input.is_action_just_pressed("dash"):
 					dash()
@@ -77,7 +79,7 @@ func get_inputs():
 
 ######################################## MOVEMENT FUNCTIONS ########################################
 func do_movement(delta):
-	VELOCITY += SPEED * 30
+	VELOCITY += SPEED * actual_speed
 	VELOCITY *= 0.825
 	velocity.x = VELOCITY
 	velocity += gravity_vector * gravity_magnitude * delta

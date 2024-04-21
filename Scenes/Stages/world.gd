@@ -37,8 +37,8 @@ extends Node2D
 
 ############################################ DEBUGGING ############################################
 
-@onready var skip_intro : bool = true
-@onready var skip_main_menu : bool = true
+@onready var skip_intro : bool = false
+@onready var skip_main_menu : bool = false
 
 func _ready():
 	camera.global_position = Vector2(0, -250)
@@ -56,6 +56,7 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("test_input"):
 		#change_stage(3)
+		#player_inst.global_position = Vector2(2160, -240)
 		pass
 	if player_inst and player_inst.game_start:
 		camera.global_position = player_inst.global_position + Vector2(0, -40)

@@ -13,7 +13,7 @@ class_name EnemyVillager
 @onready var attacking : bool = false
 
 func _ready():
-	set_health(50)
+	set_health(30)
 	attack_timer.one_shot = true
 	attack_timer.wait_time = 1.5
 	turn_timer.wait_time = 1

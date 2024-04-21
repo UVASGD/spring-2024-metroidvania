@@ -90,7 +90,7 @@ func do_movement(delta):
 	move_and_slide()
 
 func jump():
-	velocity.y = -275
+	velocity.y = -300
 
 func wall_jump():
 	var wall_normal = get_wall_normal()

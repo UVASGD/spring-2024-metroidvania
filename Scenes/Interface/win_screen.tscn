@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://l3q3px07bm7b"]
+
+[ext_resource type="PackedScene" uid="uid://bpjwo72dby0qe" path="res://Scenes/Interface/game_over_screen.tscn" id="1_ey2fk"]
+[ext_resource type="Script" path="res://Scenes/Interface/win_screen.gd" id="2_3emqe"]
+
+[node name="WinScreen" instance=ExtResource("1_ey2fk")]
+script = ExtResource("2_3emqe")
+
+[node name="ColorRect" parent="." index="0"]
+color = Color(0, 0, 0, 1)
+
+[node name="Label" parent="." index="1"]
+modulate = Color(1, 1, 1, 1)
+text = "the end :)"

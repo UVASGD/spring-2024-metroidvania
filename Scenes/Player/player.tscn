@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dpxt2ugpyaslm"]
+[gd_scene load_steps=21 format=3 uid="uid://dpxt2ugpyaslm"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_63i3x"]
 [ext_resource type="Texture2D" uid="uid://bt2rc7ai6dilx" path="res://Assets/Sprites/Player/PlayerSpritesheet.png" id="2_hfi1l"]
 [ext_resource type="PackedScene" uid="uid://duq5u2y1cxl7o" path="res://Scenes/Interface/player_hud.tscn" id="4_2palu"]
 [ext_resource type="AudioStream" uid="uid://bggyatf7ow7ju" path="res://Assets/Sounds/59992__qubodup__swosh-sword-swing.mp3" id="5_t7xo1"]
+[ext_resource type="AudioStream" uid="uid://bybuabmv5t84m" path="res://Assets/Sounds/Dark Souls - You Died Sound Effect.mp3" id="6_7yedp"]
 [ext_resource type="PackedScene" uid="uid://d4imk8o8pdsl1" path="res://Scenes/hurtbox.tscn" id="8_lervm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hf7u"]
@@ -236,6 +237,9 @@ shape = SubResource("RectangleShape2D_d3v2r")
 
 [node name="AttackAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_t7xo1")
+
+[node name="DeathAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_7yedp")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]

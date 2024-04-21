@@ -10,6 +10,7 @@ extends Node2D
 
 @onready var camera : Node = $Camera2D
 @onready var audio_player : Node = $AudioStreamPlayer
+@onready var audio_waves : Node = $AudioWaves
 
 @onready var beach_stage_1 : PackedScene = preload("res://Scenes/Stages/1-Beach/beach_stage_1.tscn")
 @onready var beach_stage_2 : PackedScene = preload("res://Scenes/Stages/1-Beach/beach_stage_2.tscn")
@@ -32,7 +33,7 @@ extends Node2D
 @onready var cathedral_music : AudioStreamMP3 = preload("res://Assets/Sounds/cathedral.mp3")
 @onready var final_boss_music : AudioStreamMP3 = preload("res://Assets/Sounds/bossmusic.mp3")
 
-@onready var music = [title_music, title_to_beach_music, beach_music, forest_music, cathedral_music, final_boss_music]
+@onready var music = [beach_music, beach_music, forest_music, cathedral_music]
 
 ############################################ DEBUGGING ############################################
 
@@ -42,7 +43,7 @@ extends Node2D
 func _ready():
 	camera.global_position = Vector2(0, -250)
 	RenderingServer.set_default_clear_color(Color.LIGHT_SLATE_GRAY)
-	spawn_stage(beach_stage_1)
+	spawn_stage(0)
 	spawn_player()
 	if !skip_intro:
 		spawn_intro_screen()
@@ -54,8 +55,8 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("test_input"):
-		change_stage(forest_stage_1)
-		stage_index = 2
+		#change_stage(3)
+		pass
 	if player_inst and player_inst.game_start:
 		camera.global_position = player_inst.global_position + Vector2(0, -40)
 	if stage_index == 0:
@@ -98,8 +99,7 @@ func end_level():
 	add_child(transition_inst)
 
 func next_level():
-	stage_index += 1
-	change_stage(stages[stage_index])
+	change_stage(stage_index + 1)
 
 func allow_player_control():
 	if player_inst:
@@ -114,7 +114,10 @@ func allow_player_control():
 	if player_inst:
 		player_inst.is_interacting = false
 
-func change_stage(new_stage : PackedScene):
+func change_stage(new_stage : int):
+	if music[stage_index] != music[new_stage]:
+		play_music(music[new_stage])
+	stage_index = new_stage
 	if current_stage != null:
 		get_tree().paused = true
 		current_stage.queue_free()
@@ -122,8 +125,12 @@ func change_stage(new_stage : PackedScene):
 		player_inst.global_position = Vector2(-200, 0)
 		get_tree().paused = false
 
-func spawn_stage(stage : PackedScene):
-	var stage_inst = stage.instantiate()
+func spawn_stage(stage : int):
+	if stage_index == 0:
+		audio_waves.play()
+	else:
+		audio_waves.stop()
+	var stage_inst = stages[stage].instantiate()
 	stage_inst.global_position = Vector2(0, 0)
 	add_child(stage_inst)
 	current_stage = stage_inst

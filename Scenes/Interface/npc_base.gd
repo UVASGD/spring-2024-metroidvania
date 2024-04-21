@@ -20,6 +20,12 @@ func _ready():
 	text_box.clear()
 	text_box.z_index = 1
 
+func _process(_delta):
+	if is_speaking:
+		interact_icon.visible = false
+	else:
+		interact_icon.visible = true
+
 func interact():
 	if !is_speaking:
 		text_box.clear()

@@ -4,6 +4,8 @@ class_name Player
 @onready var attack1 : PackedScene = preload("res://Scenes/Player/player_attack1.tscn")
 @onready var attack2 : PackedScene = preload("res://Scenes/Player/player_attack2.tscn")
 
+@onready var game_over : PackedScene = preload("res://Scenes/Interface/game_over_screen.tscn")
+
 const gravity_vector : Vector2 = Vector2(0, 1)
 const gravity_magnitude : int = 800
 
@@ -16,6 +18,7 @@ const gravity_magnitude : int = 800
 @onready var health : Node = $PlayerHUD/Health
 @onready var health_bar : Node = $PlayerHUD/Health/HealthBar
 @onready var attack_audio : Node = $AttackAudio
+@onready var death_audio : Node = $DeathAudio
 
 @onready var max_health : int = 100
 @onready var current_health : int = max_health
@@ -34,6 +37,7 @@ const gravity_magnitude : int = 800
 @onready var is_dashing : bool = false
 @onready var is_attacking : bool = false
 @onready var is_invulnerable : bool = false
+@onready var is_alive : bool = true
 
 @onready var interactable_area_count : int = 0
 @onready var is_interacting : bool = false
@@ -134,12 +138,13 @@ func _on_hurtbox_area_entered(area):
 		receive_damage(area.damage)
 
 func receive_damage(damage : int):
-	self.current_health -= damage
-	print("The player took " + str(damage) + " damage!")
-	if current_health <= 0:
-		print("The player died!")
-		print("GAME OVER")
-		die()
+	if current_health > 0:
+		self.current_health -= damage
+		print("The player took " + str(damage) + " damage!")
+		if current_health <= 0:
+			print("The player died!")
+			print("GAME OVER")
+			die()
 
 ####################################### INTERACTION FUNCTIONS ######################################
 func interact():
@@ -166,14 +171,20 @@ func _on_interact_area_area_exited(area):
 		interactable_area_count -= 1
 
 func die():
+	death_audio.play()
+	is_alive = false
 	self.is_interacting = true
 	anim_player.play("die")
-	await anim_player.animation_finished
-	get_tree().paused = true
+	spawn_gameover()
+	#get_tree().paused = true
+
+func spawn_gameover():
+	var gameover_inst = game_over.instantiate()
+	add_child(gameover_inst)
 
 ######################################## SPRITE/ANIMATIONS #########################################
 func update_anims(input_axis):
-	if game_start:
+	if game_start and is_alive:
 		if is_dashing:
 			anim_player.play("roll")
 		else:

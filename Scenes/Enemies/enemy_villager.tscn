@@ -95,6 +95,7 @@ _data = {
 }
 
 [node name="EnemyVillager" instance=ExtResource("1_xma7s")]
+floor_constant_speed = true
 script = ExtResource("2_5tlll")
 
 [node name="Sprite2D" parent="." index="0"]
@@ -112,6 +113,10 @@ collision_mask = 2
 position = Vector2(-13, -21.5)
 shape = SubResource("RectangleShape2D_jn4ay")
 
+[node name="RayCast2D" type="RayCast2D" parent="Sprite2D" index="1"]
+position = Vector2(0, 3)
+target_position = Vector2(-20, 0)
+
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, -13.5)
 
@@ -125,6 +130,8 @@ libraries = {
 }
 
 [node name="AttackTimer" type="Timer" parent="." index="4"]
+
+[node name="TurnTimer" type="Timer" parent="." index="5"]
 
 [connection signal="area_entered" from="Sprite2D/DetectPlayer" to="." method="_on_detect_player_area_entered"]
 [connection signal="area_exited" from="Sprite2D/DetectPlayer" to="." method="_on_detect_player_area_exited"]

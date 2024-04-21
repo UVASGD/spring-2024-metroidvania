@@ -2,6 +2,8 @@ extends EnemyBase
 class_name EnemyVillager
 
 @onready var attack_timer : Node = $AttackTimer
+@onready var turn_timer : Node = $TurnTimer
+@onready var raycast : Node = $Sprite2D/RayCast2D
 
 @onready var villager_attack : PackedScene = preload("res://Scenes/Enemies/enemy_villager_attack.tscn")
 
@@ -12,6 +14,8 @@ class_name EnemyVillager
 func _ready():
 	attack_timer.one_shot = true
 	attack_timer.wait_time = 1.5
+	turn_timer.wait_time = 1
+	turn_timer.one_shot = true
 
 func _physics_process(delta):
 	update_anims()
@@ -24,6 +28,11 @@ func _physics_process(delta):
 			anim_player.play("idle")
 	else:
 		SPEED = 5 * direction_facing
+	var collider = raycast.get_collider()
+	if collider is TileMap and turn_timer.is_stopped():
+		print("TURN")
+		direction_facing *= -1
+		turn_timer.start()
 
 func do_movement(delta):
 	VELOCITY += SPEED
@@ -51,9 +60,9 @@ func update_anims():
 		anim_player.play("run")
 		
 	if direction_facing == 1:
-		sprite.flip_h = 1
+		sprite.scale = Vector2(-1, 1)
 	else:
-		sprite.flip_h = 0
+		sprite.scale = Vector2(1, 1)
 
 func _on_detect_player_area_entered(_area):
 	in_range = true

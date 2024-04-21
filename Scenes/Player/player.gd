@@ -25,7 +25,7 @@ const gravity_magnitude : int = 800
 @export var VELOCITY : float = 0.0
 
 @onready var has_attack1 : bool = true
-@onready var has_attack2 : bool = true
+@onready var has_attack2 : bool = false
 
 @onready var game_start : bool = false
 @onready var direction_facing = 1

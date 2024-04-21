@@ -16,13 +16,13 @@ extends Node2D
 @onready var beach_stage_2 : PackedScene = preload("res://Scenes/Stages/1-Beach/beach_stage_2.tscn")
 #@onready var beach_stage_3 : PackedScene = preload("res://Scenes/Stages/1-Beach/beach_stage_3.tscn")
 @onready var forest_stage_1 : PackedScene = preload("res://Scenes/Stages/2-Forest/forest_stage_1.tscn")
-#@onready var forest_stage_2 : PackedScene = preload("res://Scenes/Stages/2-Forest/forest_stage_2.tscn")
+@onready var forest_stage_2 : PackedScene = preload("res://Scenes/Stages/2-Forest/forest_stage_2.tscn")
 #@onready var forest_stage_3 : PackedScene = preload("res://Scenes/Stages/2-Forest/forest_stage_3.tscn")
 @onready var cathedral_stage_1 : PackedScene = preload("res://Scenes/Stages/6-Cathedral/cathedral_stage_1.tscn")
 #@onready var cathedral_stage_2 : PackedScene = preload("res://Scenes/Stages/6-Cathedral/cathedral_stage_2.tscn")
 #@onready var cathedral_stage_3 : PackedScene = preload("res://Scenes/Stages/6-Cathedral/cathedral_stage_3.tscn")
 
-@onready var stages = [beach_stage_1, beach_stage_2, forest_stage_1, cathedral_stage_1]
+@onready var stages = [beach_stage_1, beach_stage_2, forest_stage_1, forest_stage_2, cathedral_stage_1]
 @onready var stage_index : int = 0
 @onready var current_stage : Node = null
 
@@ -33,7 +33,7 @@ extends Node2D
 @onready var cathedral_music : AudioStreamMP3 = preload("res://Assets/Sounds/cathedral.mp3")
 @onready var final_boss_music : AudioStreamMP3 = preload("res://Assets/Sounds/bossmusic.mp3")
 
-@onready var music = [beach_music, beach_music, forest_music, cathedral_music]
+@onready var music = [beach_music, beach_music, forest_music, forest_music, cathedral_music]
 
 ############################################ DEBUGGING ############################################
 

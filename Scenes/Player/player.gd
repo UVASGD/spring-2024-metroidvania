@@ -31,6 +31,7 @@ const gravity_magnitude : int = 800
 @onready var direction_facing = 1
 @onready var is_dashing : bool = false
 @onready var is_attacking : bool = false
+@onready var is_invulnerable : bool = false
 
 @onready var interactable_area_count : int = 0
 @onready var is_interacting : bool = false
@@ -70,8 +71,8 @@ func get_inputs():
 					wall_jump()
 				if Input.is_action_just_pressed("interact") and interactable_area_count > 0:
 					interact()
-				if Input.is_action_just_pressed("pause"):
-					get_tree().paused = true
+				#if Input.is_action_just_pressed("pause"):
+					#get_tree().paused = true
 
 ######################################## MOVEMENT FUNCTIONS ########################################
 func do_movement(delta):
@@ -93,12 +94,14 @@ func wall_jump():
 func dash():
 	if(dash_timer.is_stopped()):
 		is_dashing = true
+		is_invulnerable = true
 		#anim_player.play("roll")
 		VELOCITY += 400 * direction_facing
 		dash_timer.wait_time = 0.5
 		dash_timer.start()
 		await dash_timer.timeout
 		is_dashing = false
+		is_invulnerable = false
 		dash_timer.wait_time = 1.0
 
 ######################################### COMBAT FUNCTIONS #########################################
@@ -122,7 +125,8 @@ func spawn_attack2():
 		attack_timer.start()
 
 func _on_hurtbox_area_entered(area):
-	receive_damage(area.damage)
+	if !is_invulnerable:
+		receive_damage(area.damage)
 
 func receive_damage(damage : int):
 	self.current_health -= damage
@@ -130,6 +134,7 @@ func receive_damage(damage : int):
 	if current_health <= 0:
 		print("The player died!")
 		print("GAME OVER")
+		die()
 
 ####################################### INTERACTION FUNCTIONS ######################################
 func interact():
@@ -154,6 +159,9 @@ func _on_interact_area_area_exited(area):
 		area.remove_from_group("InteractableAreas")
 		area.get_parent().interact_icon.visible = false
 		interactable_area_count -= 1
+
+func die():
+	get_tree().paused = true
 
 ######################################## SPRITE/ANIMATIONS #########################################
 func update_anims(input_axis):

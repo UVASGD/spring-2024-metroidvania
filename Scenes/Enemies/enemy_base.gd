@@ -13,6 +13,10 @@ const gravity_magnitude : int = 800
 @onready var SPEED = 0
 @onready var VELOCITY = 0
 
+func set_health(value : int):
+	max_health = value
+	current_health = value
+
 func _on_hurtbox_area_entered(area):
 	receive_damage(area.damage)
 

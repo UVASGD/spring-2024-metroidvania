@@ -7,26 +7,36 @@ class_name EnemyVillager
 
 @onready var direction_facing = -1
 @onready var in_range : bool = false
+@onready var attacking : bool = false
 
 func _ready():
 	attack_timer.one_shot = true
 	attack_timer.wait_time = 1.5
 
 func _physics_process(delta):
-	#update_anims(SPEED)
+	update_anims()
 	do_movement(delta)
-	if in_range and attack_timer.is_stopped():
-		attack()
+	if in_range:
+		SPEED = 0
+		if attack_timer.is_stopped():
+			attack()
+		if !attacking:
+			anim_player.play("idle")
+	else:
+		SPEED = 5 * direction_facing
 
 func do_movement(delta):
-	VELOCITY += SPEED * 15
+	VELOCITY += SPEED
 	VELOCITY *= 0.9
 	velocity.x = VELOCITY
 	velocity += gravity_vector * gravity_magnitude * delta
 	move_and_slide()
 
 func attack():
+	attacking = true
 	anim_player.play("attack")
+	await anim_player.animation_finished
+	attacking = false
 	#spawn_attack()
 
 func spawn_attack():
@@ -35,6 +45,15 @@ func spawn_attack():
 	attack_inst.global_position = self.global_position + Vector2(20 * direction_facing, -10)
 	get_parent().add_child(attack_inst)
 	attack_timer.start()
+
+func update_anims():
+	if abs(SPEED) > 0:
+		anim_player.play("run")
+		
+	if direction_facing == 1:
+		sprite.flip_h = 1
+	else:
+		sprite.flip_h = 0
 
 func _on_detect_player_area_entered(_area):
 	in_range = true

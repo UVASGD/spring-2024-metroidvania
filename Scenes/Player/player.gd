@@ -43,6 +43,7 @@ func _ready():
 	attack_timer.one_shot = true
 	attack_timer.wait_time = 0.75
 	dash_timer.wait_time = 1.0
+	dash_timer.one_shot = true
 
 ########################################## PRIMARY UPDATE ##########################################
 func _physics_process(delta):
@@ -90,9 +91,14 @@ func wall_jump():
 
 func dash():
 	if(dash_timer.is_stopped()):
+		is_dashing = true
+		anim_player.play("roll")
 		VELOCITY += 400 * direction_facing
-		dash_timer.wait_time = 1
+		dash_timer.wait_time = 0.5
 		dash_timer.start()
+		await dash_timer.timeout
+		is_dashing = false
+		dash_timer.wait_time = 1.0
 
 ######################################### COMBAT FUNCTIONS #########################################
 func spawn_attack1():
@@ -150,11 +156,12 @@ func _on_interact_area_area_exited(area):
 
 ######################################## SPRITE/ANIMATIONS #########################################
 func update_anims(input_axis):
-	if input_axis != 0:
-		flip_sprite(input_axis)
-		anim_player.play("run")
-	else:
-		anim_player.play("idle")
+	if !is_dashing:
+		if input_axis != 0:
+			flip_sprite(input_axis)
+			anim_player.play("run")
+		else:
+			anim_player.play("idle")
 	
 	if !is_on_floor() && velocity.y < 0:
 		anim_player.play("jump")
@@ -177,10 +184,10 @@ func flip_sprite(input_axis):
 
 func hud():
 	health_bar.value = self.current_health
-	if is_interacting and health.modulate == Color(1, 1, 1):
+	if is_interacting and health.modulate == Color(1, 1, 1, 0.5):
 		var tween = create_tween()
 		tween.tween_property(health, "modulate", Color(1, 1, 1, 0), 1)
 	if !is_interacting and health.modulate == Color(1, 1, 1, 0) and game_start:
 		var tween = create_tween()
-		tween.tween_property(health, "modulate", Color(1, 1, 1), 1)
+		tween.tween_property(health, "modulate", Color(1, 1, 1, 0.5), 1)
 	

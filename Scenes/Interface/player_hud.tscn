@@ -8,7 +8,7 @@
 
 [node name="Health" type="Node2D" parent="."]
 position = Vector2(28, 25)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.25, 1.25)
 
 [node name="HealthBar" type="TextureProgressBar" parent="Health"]
 offset_left = 52.0

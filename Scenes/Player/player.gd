@@ -87,12 +87,12 @@ func wall_jump():
 	var wall_normal = get_wall_normal()
 	var dist = 250
 	VELOCITY =  wall_normal.x * dist
-	velocity.y = -300
+	velocity.y = -250
 
 func dash():
 	if(dash_timer.is_stopped()):
 		is_dashing = true
-		anim_player.play("roll")
+		#anim_player.play("roll")
 		VELOCITY += 400 * direction_facing
 		dash_timer.wait_time = 0.5
 		dash_timer.start()
@@ -162,6 +162,8 @@ func update_anims(input_axis):
 			anim_player.play("run")
 		else:
 			anim_player.play("idle")
+	else:
+		anim_player.play("roll")
 	
 	if !is_on_floor() && velocity.y < 0:
 		anim_player.play("jump")
@@ -170,9 +172,9 @@ func update_anims(input_axis):
 	elif !is_on_floor() && velocity.y > 0:
 		anim_player.play("fall")
 	
-	#if is_on_wall_only():
-		#flip_sprite(-input_axis)
-		#anim_player.play("wall_slide")
+	if is_on_wall_only():
+		flip_sprite(-input_axis)
+		anim_player.play("wall_slide")
 
 func flip_sprite(input_axis):
 	sprite.flip_h = input_axis < 0

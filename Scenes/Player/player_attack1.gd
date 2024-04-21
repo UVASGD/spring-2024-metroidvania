@@ -7,6 +7,7 @@ extends Hitbox
 @onready var direction_facing
 
 func _ready():
+	self.damage = 10
 	if direction_facing < 0:
 		sprite.flip_h = 1
 	else:

@@ -123,4 +123,4 @@ color = Color(0.160784, 0.262745, 0.458824, 0.152941)
 position = Vector2(171, -69)
 
 [node name="EnemyKnight" parent="." index="9" instance=ExtResource("10_ywl3m")]
-position = Vector2(275, -31)
+position = Vector2(366, 3)

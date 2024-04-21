@@ -49,7 +49,7 @@ func attack():
 func spawn_attack():
 	var attack_inst = knight_attack.instantiate()
 	attack_inst.direction_facing = self.direction_facing
-	attack_inst.global_position = self.global_position + Vector2(20 * direction_facing, -10)
+	attack_inst.global_position = self.global_position + Vector2(20 * direction_facing, 10)
 	get_parent().add_child(attack_inst)
 	attack_timer.start()
 
@@ -62,8 +62,8 @@ func update_anims():
 	else:
 		sprite.scale = Vector2(1, 1)
 
-func _on_detect_player_area_entered(area):
+func _on_detect_player_area_entered(_area):
 	in_range = true
 
-func _on_detect_player_area_exited(area):
+func _on_detect_player_area_exited(_area):
 	in_range = false

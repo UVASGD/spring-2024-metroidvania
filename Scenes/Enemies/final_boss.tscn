@@ -11,13 +11,13 @@ size = Vector2(16, 16)
 size = Vector2(16, 16)
 
 [node name="FinalBoss" instance=ExtResource("1_dewfk")]
+position = Vector2(0, -8)
 script = ExtResource("2_lujsw")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_8wy4b")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_8gy5q")
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]

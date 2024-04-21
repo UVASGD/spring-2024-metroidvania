@@ -8,6 +8,7 @@ extends Node2D
 @onready var player_inst : Node = null
 
 @onready var camera : Node = $Camera2D
+@onready var audio_player : Node = $AudioStreamPlayer
 
 @onready var beach_stage_1 : PackedScene = preload("res://Scenes/Stages/1-Beach/beach_stage_1.tscn")
 @onready var beach_stage_2 : PackedScene = preload("res://Scenes/Stages/1-Beach/beach_stage_2.tscn")
@@ -26,7 +27,7 @@ extends Node2D
 ############################################ DEBUGGING ############################################
 
 @onready var skip_intro : bool = true
-@onready var skip_main_menu : bool = true
+@onready var skip_main_menu : bool = false
 
 func _ready():
 	camera.global_position = Vector2(0, -250)
@@ -65,6 +66,7 @@ func end_intro():
 	spawn_main_menu()
 
 func spawn_main_menu():
+	audio_player.play()
 	var main_menu_inst = main_menu.instantiate()
 	add_child(main_menu_inst)
 

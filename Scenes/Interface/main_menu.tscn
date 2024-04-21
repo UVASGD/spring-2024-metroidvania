@@ -8,14 +8,14 @@
 script = ExtResource("1_x2lkc")
 
 [node name="GameLogo" type="Sprite2D" parent="."]
-position = Vector2(600, 200)
+position = Vector2(611, 200)
 scale = Vector2(3.5, 3.5)
 texture = ExtResource("2_xaqe1")
 
 [node name="MainMenuButtons" parent="." instance=ExtResource("1_wt5uf")]
-offset_left = 560.0
-offset_top = 344.0
-offset_right = 560.0
-offset_bottom = 344.0
+offset_left = 582.0
+offset_top = 342.0
+offset_right = 582.0
+offset_bottom = 342.0
 scale = Vector2(2.5, 2.5)
 pivot_offset = Vector2(54, 30)

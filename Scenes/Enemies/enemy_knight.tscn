@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://3a0utkrkkpsv" path="res://Assets/Sprites/Enemies/KnightArmourCorrectSize.png" id="2_axwj7"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_knight.gd" id="2_wyyfc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0who7"]
-size = Vector2(22, 45)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xf7o4"]
+size = Vector2(46, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f38uy"]
 size = Vector2(22, 45)
@@ -20,11 +20,20 @@ script = ExtResource("2_wyyfc")
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_axwj7")
 
-[node name="Hitbox#CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-position = Vector2(3, 2.5)
-shape = SubResource("RectangleShape2D_0who7")
+[node name="DetectPlayer" type="Area2D" parent="Sprite2D" index="0"]
+position = Vector2(0, 16)
+collision_layer = 4
+collision_mask = 2
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/DetectPlayer" index="0"]
+position = Vector2(-23, -17)
+shape = SubResource("RectangleShape2D_xf7o4")
+
+[node name="RayCast2D" type="RayCast2D" parent="Sprite2D" index="1"]
+position = Vector2(0, 3)
+target_position = Vector2(-20, 0)
+
+[node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(3, 2.5)
 shape = SubResource("RectangleShape2D_f38uy")
 
@@ -32,6 +41,6 @@ shape = SubResource("RectangleShape2D_f38uy")
 position = Vector2(3, 2.5)
 shape = SubResource("RectangleShape2D_obf7r")
 
-[node name="AttackTimer" type="Timer" parent="." index="5"]
+[node name="AttackTimer" type="Timer" parent="." index="4"]
 
 [editable path="Hurtbox"]

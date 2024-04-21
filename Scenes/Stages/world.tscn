@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7wyh4n3jd0rh"]
+[gd_scene load_steps=3 format=3 uid="uid://c7wyh4n3jd0rh"]
 
 [ext_resource type="Script" path="res://Scenes/Stages/world.gd" id="1_5umtl"]
+[ext_resource type="AudioStream" uid="uid://pkw7uohrqab1" path="res://Assets/Sounds/mainmenu.mp3" id="2_13suf"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_5umtl")
@@ -11,3 +12,6 @@ zoom = Vector2(3, 3)
 limit_left = -480
 limit_right = 2400
 position_smoothing_enabled = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_13suf")

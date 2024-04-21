@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dibsl187r5dm6"]
+[gd_scene load_steps=12 format=3 uid="uid://dibsl187r5dm6"]
 
 [ext_resource type="PackedScene" uid="uid://cyi2ywmi5luxp" path="res://Scenes/Enemies/enemy_base.tscn" id="1_klx6c"]
-[ext_resource type="Texture2D" uid="uid://3a0utkrkkpsv" path="res://Assets/Sprites/Enemies/KnightArmourCorrectSize.png" id="2_axwj7"]
 [ext_resource type="Script" path="res://Scenes/Enemies/enemy_knight.gd" id="2_wyyfc"]
+[ext_resource type="Texture2D" uid="uid://cj4cbngf4tdxm" path="res://Assets/Sprites/Enemies/KnightSpritesheet.png" id="3_hw6xl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf7o4"]
 size = Vector2(46, 52)
@@ -13,15 +13,89 @@ size = Vector2(22, 45)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obf7r"]
 size = Vector2(22, 45)
 
+[sub_resource type="Animation" id="Animation_pprk3"]
+resource_name = "walk"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_1y16e"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4y2rg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_t1isd"]
+resource_name = "attack"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_obnyt"]
+_data = {
+"RESET": SubResource("Animation_4y2rg"),
+"attack": SubResource("Animation_t1isd"),
+"idle": SubResource("Animation_1y16e"),
+"walk": SubResource("Animation_pprk3")
+}
+
 [node name="EnemyKnight" instance=ExtResource("1_klx6c")]
 position = Vector2(-3, -25)
 script = ExtResource("2_wyyfc")
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_axwj7")
+position = Vector2(5, -23)
+texture = ExtResource("3_hw6xl")
+hframes = 11
+vframes = 4
 
 [node name="DetectPlayer" type="Area2D" parent="Sprite2D" index="0"]
-position = Vector2(0, 16)
+position = Vector2(0, 35)
 collision_layer = 4
 collision_mask = 2
 
@@ -30,17 +104,27 @@ position = Vector2(-23, -17)
 shape = SubResource("RectangleShape2D_xf7o4")
 
 [node name="RayCast2D" type="RayCast2D" parent="Sprite2D" index="1"]
-position = Vector2(0, 3)
+position = Vector2(-2, 24)
 target_position = Vector2(-20, 0)
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(3, 2.5)
+position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_f38uy")
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
-position = Vector2(3, 2.5)
+position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_obf7r")
 
+[node name="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_obnyt")
+}
+
 [node name="AttackTimer" type="Timer" parent="." index="4"]
+
+[node name="TurnTimer" type="Timer" parent="." index="5"]
+
+[connection signal="area_entered" from="Sprite2D/DetectPlayer" to="." method="_on_detect_player_area_entered"]
+[connection signal="area_exited" from="Sprite2D/DetectPlayer" to="." method="_on_detect_player_area_exited"]
 
 [editable path="Hurtbox"]

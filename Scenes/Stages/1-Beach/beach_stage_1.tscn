@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://60pds0vqmqe4"]
+[gd_scene load_steps=12 format=3 uid="uid://60pds0vqmqe4"]
 
 [ext_resource type="PackedScene" uid="uid://c1owfsrioirqm" path="res://Scenes/Stages/stageTemplate.tscn" id="1_al3mb"]
 [ext_resource type="Texture2D" uid="uid://cjns7pkq4qcp5" path="res://Assets/Sprites/World/Beach/Beach-4-2.png" id="2_gydb8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bvy5mkfqrn126" path="res://Assets/Sprites/World/Beach/Beach-2-1.png" id="7_7tae2"]
 [ext_resource type="PackedScene" uid="uid://d1vhlcg4eqiak" path="res://Scenes/Enemies/enemy_villager.tscn" id="8_k713n"]
 [ext_resource type="PackedScene" uid="uid://ceuqw60s8beh4" path="res://Scenes/Enemies/final_boss.tscn" id="9_3rb5y"]
+[ext_resource type="PackedScene" uid="uid://dibsl187r5dm6" path="res://Scenes/Enemies/enemy_knight.tscn" id="10_ywl3m"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3losy"]
 particle_flag_disable_z = true
@@ -120,3 +121,6 @@ color = Color(0.160784, 0.262745, 0.458824, 0.152941)
 
 [node name="FinalBoss" parent="." index="8" instance=ExtResource("9_3rb5y")]
 position = Vector2(171, -69)
+
+[node name="EnemyKnight" parent="." index="9" instance=ExtResource("10_ywl3m")]
+position = Vector2(275, -31)

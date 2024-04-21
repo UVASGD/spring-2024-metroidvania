@@ -17,4 +17,4 @@ func _ready():
 
 func _process(_delta):
 	if parent != null:
-		self.global_position = parent.global_position + Vector2(25 * self.direction_facing, -15)
+		self.global_position = parent.global_position + Vector2(15 * self.direction_facing, -15)

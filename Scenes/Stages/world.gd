@@ -27,7 +27,7 @@ extends Node2D
 ############################################ DEBUGGING ############################################
 
 @onready var skip_intro : bool = true
-@onready var skip_main_menu : bool = false
+@onready var skip_main_menu : bool = true
 
 func _ready():
 	camera.global_position = Vector2(0, -250)

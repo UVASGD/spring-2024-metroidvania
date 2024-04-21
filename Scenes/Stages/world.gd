@@ -26,7 +26,7 @@ extends Node2D
 ############################################ DEBUGGING ############################################
 
 @onready var skip_intro : bool = true
-@onready var skip_main_menu : bool = true
+@onready var skip_main_menu : bool = false
 
 func _ready():
 	camera.global_position = Vector2(0, -250)
@@ -53,7 +53,8 @@ func _process(_delta):
 		camera.limit_left = -48
 
 func start_game():
-	player_inst.game_start = true
+	if player_inst:
+		player_inst.get_up()
 
 func end_intro():
 	var tween = create_tween()

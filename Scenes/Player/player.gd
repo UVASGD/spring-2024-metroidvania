@@ -39,6 +39,7 @@ const gravity_magnitude : int = 800
 @onready var world : Node = get_parent()
 
 func _ready():
+	anim_player.play("down")
 	health.modulate = Color(1, 1, 1, 0)
 	attack_timer.one_shot = true
 	attack_timer.wait_time = 0.75
@@ -156,24 +157,25 @@ func _on_interact_area_area_exited(area):
 
 ######################################## SPRITE/ANIMATIONS #########################################
 func update_anims(input_axis):
-	if is_dashing:
-		anim_player.play("roll")
-	else:
-		if input_axis != 0:
-			flip_sprite(input_axis)
-			anim_player.play("fall")
-			
+	if game_start:
+		if is_dashing:
+			anim_player.play("roll")
 		else:
-			anim_player.play("idle")
-	
-	if !is_on_floor() && velocity.y < 0:
-		anim_player.play("jump")
-	elif !is_on_floor() && velocity.y > 0:
-		anim_player.play("fall")
-	
-	if is_on_wall_only():
-		flip_sprite(-input_axis)
-		anim_player.play("wall_slide")
+			if input_axis != 0:
+				flip_sprite(input_axis)
+				anim_player.play("run")
+				
+			else:
+				anim_player.play("idle")
+		
+		if !is_on_floor() && velocity.y < 0:
+			anim_player.play("jump")
+		elif !is_on_floor() && velocity.y > 0:
+			anim_player.play("fall")
+		
+		if is_on_wall_only():
+			flip_sprite(-input_axis)
+			anim_player.play("wall_slide")
 
 func flip_sprite(input_axis):
 	sprite.flip_h = input_axis < 0
@@ -183,6 +185,11 @@ func flip_sprite(input_axis):
 	elif input_axis > 0:
 		direction_facing = 1
 
+func get_up():
+	anim_player.play("get_up")
+	await anim_player.animation_finished
+	self.game_start = true
+
 func hud():
 	health_bar.value = self.current_health
 	if is_interacting and health.modulate == Color(1, 1, 1, 0.5):
@@ -191,4 +198,4 @@ func hud():
 	if !is_interacting and health.modulate == Color(1, 1, 1, 0) and game_start:
 		var tween = create_tween()
 		tween.tween_property(health, "modulate", Color(1, 1, 1, 0.5), 1)
-	
+

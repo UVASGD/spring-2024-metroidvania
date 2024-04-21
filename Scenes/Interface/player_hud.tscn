@@ -6,10 +6,14 @@
 
 [node name="PlayerHUD" type="CanvasLayer"]
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="Health" type="Node2D" parent="."]
+position = Vector2(28, 25)
+scale = Vector2(1.5, 1.5)
+
+[node name="HealthBar" type="TextureProgressBar" parent="Health"]
 offset_left = 52.0
 offset_top = 16.0
-offset_right = 95.0
+offset_right = 116.0
 offset_bottom = 56.0
 scale = Vector2(2, 2)
 value = 100.0
@@ -17,7 +21,7 @@ texture_over = ExtResource("2_176xy")
 texture_progress = ExtResource("3_wgx0v")
 tint_progress = Color(0.929412, 0.054902, 0, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="HealthIcon" type="Sprite2D" parent="Health"]
 position = Vector2(32, 32)
 scale = Vector2(2, 2)
 texture = ExtResource("1_nie2j")

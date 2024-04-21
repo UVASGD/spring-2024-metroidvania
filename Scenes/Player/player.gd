@@ -12,6 +12,9 @@ const gravity_magnitude : int = 800
 @onready var dash_timer : Node = $DashTimer
 @onready var attack_timer : Node = $AttackTimer
 @onready var interaction_area : Node = $InteractArea
+@onready var player_hud : Node = $PlayerHUD
+@onready var health : Node = $PlayerHUD/Health
+@onready var health_bar : Node = $PlayerHUD/Health/HealthBar
 
 @onready var max_health : int = 100
 @onready var current_health : int = max_health
@@ -36,6 +39,7 @@ const gravity_magnitude : int = 800
 @onready var world : Node = get_parent()
 
 func _ready():
+	health.modulate = Color(1, 1, 1, 0)
 	attack_timer.one_shot = true
 	attack_timer.wait_time = 0.75
 	dash_timer.wait_time = 1.0
@@ -45,6 +49,7 @@ func _physics_process(delta):
 	get_inputs()
 	update_anims(SPEED)
 	do_movement(delta)
+	hud()
 
 func get_inputs():
 	if game_start:
@@ -169,3 +174,13 @@ func flip_sprite(input_axis):
 		direction_facing = -1
 	elif input_axis > 0:
 		direction_facing = 1
+
+func hud():
+	health_bar.value = self.current_health
+	if is_interacting and health.modulate == Color(1, 1, 1):
+		var tween = create_tween()
+		tween.tween_property(health, "modulate", Color(1, 1, 1, 0), 1)
+	if !is_interacting and health.modulate == Color(1, 1, 1, 0) and game_start:
+		var tween = create_tween()
+		tween.tween_property(health, "modulate", Color(1, 1, 1), 1)
+	

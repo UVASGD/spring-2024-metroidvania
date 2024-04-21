@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dpxt2ugpyaslm"]
+[gd_scene load_steps=14 format=3 uid="uid://dpxt2ugpyaslm"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_63i3x"]
 [ext_resource type="Texture2D" uid="uid://bt2rc7ai6dilx" path="res://Assets/Sprites/Player/PlayerSpritesheet.png" id="2_hfi1l"]
+[ext_resource type="PackedScene" uid="uid://duq5u2y1cxl7o" path="res://Scenes/Interface/player_hud.tscn" id="4_2palu"]
 [ext_resource type="PackedScene" uid="uid://d4imk8o8pdsl1" path="res://Scenes/hurtbox.tscn" id="8_lervm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hf7u"]
@@ -144,6 +145,8 @@ collision_mask = 64
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 position = Vector2(0, -14.9916)
 shape = SubResource("RectangleShape2D_d3v2r")
+
+[node name="PlayerHUD" parent="." instance=ExtResource("4_2palu")]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="InteractArea" to="." method="_on_interact_area_area_entered"]

@@ -85,9 +85,9 @@ func jump():
 
 func wall_jump():
 	var wall_normal = get_wall_normal()
-	var dist = 250
-	VELOCITY =  wall_normal.x * dist
-	velocity.y = -250
+	var dist = 450
+	VELOCITY = wall_normal.x * dist
+	velocity.y = -175
 
 func dash():
 	if(dash_timer.is_stopped()):
@@ -156,19 +156,18 @@ func _on_interact_area_area_exited(area):
 
 ######################################## SPRITE/ANIMATIONS #########################################
 func update_anims(input_axis):
-	if !is_dashing:
+	if is_dashing:
+		anim_player.play("roll")
+	else:
 		if input_axis != 0:
 			flip_sprite(input_axis)
-			anim_player.play("run")
+			anim_player.play("fall")
+			
 		else:
 			anim_player.play("idle")
-	else:
-		anim_player.play("roll")
 	
 	if !is_on_floor() && velocity.y < 0:
 		anim_player.play("jump")
-	#elif !is_on_floor() && velocity.y == 0:
-		#anim_player.play("jump_to_fall")
 	elif !is_on_floor() && velocity.y > 0:
 		anim_player.play("fall")
 	

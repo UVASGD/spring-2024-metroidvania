@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dpxt2ugpyaslm"]
+[gd_scene load_steps=17 format=3 uid="uid://dpxt2ugpyaslm"]
 
 [ext_resource type="Script" path="res://Scenes/Player/player.gd" id="1_63i3x"]
 [ext_resource type="Texture2D" uid="uid://bt2rc7ai6dilx" path="res://Assets/Sprites/Player/PlayerSpritesheet.png" id="2_hfi1l"]
@@ -120,10 +120,15 @@ tracks/0/keys = {
 "values": [30]
 }
 
+[sub_resource type="Animation" id="Animation_hqpyg"]
+resource_name = "get_up"
+length = 0.4
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0ixt1"]
 _data = {
 "RESET": SubResource("Animation_sseod"),
 "fall": SubResource("Animation_ljtdb"),
+"get_up": SubResource("Animation_hqpyg"),
 "idle": SubResource("Animation_d4eis"),
 "jump": SubResource("Animation_ckttt"),
 "roll": SubResource("Animation_fbjcc"),

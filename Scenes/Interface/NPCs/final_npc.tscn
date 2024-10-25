@@ -72,4 +72,4 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="7"]
 stream = ExtResource("4_eeikk")
-volume_db = -10.0
+volume_db = -20.0
